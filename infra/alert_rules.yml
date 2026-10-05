@@ -1,0 +1,22 @@
+groups:
+  - name: llm_alerts
+    rules:
+      - alert: LLMHighErrorRate
+        expr: rate(llm_calls_total{success="false"}[5m]) > 0.1
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "LLM 调用错误率超过 10%"
+
+      - alert: LLMHighLatency
+        expr: histogram_quantile(0.95, rate(llm_latency_seconds_bucket[5m])) > 30
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "LLM 响应延迟 P95 超过 30 秒"
+
+      - alert: LLMHighCost
+        expr: increase(llm_cost_usd_total[1h]) > 100
+        labels: { severity: critical }
+        annotations:
+          summary: "LLM 调用成本单小时超过 $100"
