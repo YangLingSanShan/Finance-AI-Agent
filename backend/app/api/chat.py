@@ -5,8 +5,10 @@ backend/app/api/chat.py
 import uuid
 import time
 import logging
+from app.storage.conversations import ArchivedConversation
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
+from app.config import get_settings
 from app.models.schemas import ChatRequest, ChatResponse, AgentType
 from app.agents.orchestrator import get_orchestrator
 from app.llmops.monitor import get_llmops_monitor
@@ -42,7 +44,7 @@ async def chat(request: ChatRequest):
         agent_types = [request.agent_type] if request.agent_type else None
         result = await orchestrator.run(
             query=request.message, session_id=session_id,
-            agent_types=agent_types, parallel=False, context=context,
+            agent_types=agent_types, parallel=True, context=context,
         )
 
         latency = (time.time() - start_time) * 1000
@@ -53,18 +55,27 @@ async def chat(request: ChatRequest):
             model="orchestrator", prompt_tokens=0,
             completion_tokens=len(result["final_response"]) // 4,
             total_tokens=result["execution_summary"]["total_tokens"],
-            latency_ms=latency, cost_usd=0.0, success=True,
+            latency_ms=latency, cost_usd=0.0, success=result.get("success", True),
             session_id=session_id, prompt_preview=request.message[:100],
         )
 
+        if result.get("success") is False:
+            raise HTTPException(status_code=502, detail=result["final_response"])
+
         return ChatResponse(
-            session_id=session_id, message=result["final_response"],
-            agent_type=AgentType.RESEARCHER,
+            session_id=session_id, message=result["final_response"], report_id=result.get("report_id"),
+            agent_type=(result["execution_summary"].get("agents_used") or [request.agent_type or AgentType.RESEARCHER])[-1],
+            tool_calls=result.get("tool_calls", []),
+            model=get_settings().LLM_MODEL,
             sources=sources if sources else None,
             token_usage={"total": result["execution_summary"]["total_tokens"]},
             latency_ms=round(latency, 2),
         )
 
+    except ArchivedConversation as e:
+        raise HTTPException(status_code=409, detail=str(e))
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"[Chat] failed: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -73,17 +84,15 @@ async def chat(request: ChatRequest):
 @router.post("/chat/stream")
 async def chat_stream(request: ChatRequest):
     """流式对话接口（SSE）"""
-    session_id = request.session_id or str(uuid.uuid4())
-
     async def generate():
         try:
-            orchestrator = get_orchestrator()
-            result = await orchestrator.run(query=request.message, session_id=session_id)
-            response_text = result["final_response"]
+            response = await chat(request)
+            response_text = response.message
             for i in range(0, len(response_text), 50):
                 chunk = response_text[i:i + 50]
-                yield f"event: message\ndata: {chunk}\n\n"
-            yield f"event: done\ndata: done\n\n"
+                data = "\n".join(f"data: {line}" for line in chunk.split("\n"))
+                yield f"event: message\n{data}\n\n"
+            yield "event: done\ndata: done\n\n"
         except Exception as e:
             yield f"event: error\ndata: {str(e)}\n\n"
 

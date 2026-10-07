@@ -59,7 +59,7 @@ class ChatMessageDB(Base):
     content = Column(Text, nullable=False)
     agent_type = Column(String(50))
     token_count = Column(Integer, default=0)
-    metadata = Column(JSON, default=dict)
+    metadata_ = Column("metadata", JSON, default=dict)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     session = relationship("ChatSession", back_populates="messages")
@@ -83,7 +83,7 @@ class LLMCallLog(Base):
     error_message = Column(Text)
     prompt_preview = Column(Text)
     response_preview = Column(Text)
-    metadata = Column(JSON, default=dict)
+    metadata_ = Column("metadata", JSON, default=dict)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     user = relationship("User", back_populates="llm_calls")
@@ -119,7 +119,7 @@ class KnowledgeDocument(Base):
     category = Column(String(50), nullable=False)
     source = Column(String(200))
     content_hash = Column(String(64))
-    metadata = Column(JSON, default=dict)
+    metadata_ = Column("metadata", JSON, default=dict)
     chunk_count = Column(Integer, default=0)
     indexed = Column(Boolean, default=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
@@ -137,7 +137,7 @@ class DocumentChunkDB(Base):
     document_id = Column(Integer, ForeignKey("knowledge_documents.id"), nullable=False)
     content = Column(Text, nullable=False)
     chunk_index = Column(Integer, default=0)
-    metadata = Column(JSON, default=dict)
+    metadata_ = Column("metadata", JSON, default=dict)
     embedding_id = Column(String(200))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 

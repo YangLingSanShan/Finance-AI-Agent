@@ -7,7 +7,9 @@ from app.agents.base import BaseAgent, AgentConfig, AgentExecutionResult
 from app.models.schemas import AgentType
 
 
-REPORT_SYSTEM_PROMPT = """你是专业金融研究报告撰写专家。
+REPORT_SYSTEM_PROMPT = """必须基于本轮上游分析综合输出，保留来源和数据日期；上游标为演示的数据必须继续标为演示，不得编造事实或来源。
+
+你是专业金融研究报告撰写专家。
 
 报告框架：
 1. 执行摘要（100字内）

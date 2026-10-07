@@ -3,6 +3,10 @@ backend/app/api/rag.py
 RAG 知识库 API
 """
 import logging
+import asyncio
+import uuid
+import hashlib
+from app.agents.orchestrator import get_orchestrator
 from fastapi import APIRouter, HTTPException
 from app.models.schemas import RAGQueryRequest, RAGQueryResponse, KnowledgeBaseUpload
 from app.rag.retriever import get_hybrid_retriever
@@ -36,15 +40,28 @@ async def rag_query(request: RAGQueryRequest):
 @router.post("/rag/knowledge/add")
 async def add_knowledge(request: KnowledgeBaseUpload):
     """添加知识库内容"""
+    store = get_orchestrator().store
+    doc_id = str(uuid.uuid4())
+    digest = hashlib.sha256(request.content.encode()).hexdigest()
+    payload = {"metadata": request.metadata or {}, "chunk_count": 0}
+    async def save(status, error=None):
+        await asyncio.to_thread(store.save_document, doc_id, request.title, request.category,
+            digest, payload, status, error)
+    await save('indexing')
     try:
         kb = get_kb_manager()
         count = await kb.add_text_chunks(
             texts=[request.content], category=request.category,
-            metadata_list=[{"title": request.title, **(request.metadata or {})}],
+            metadata_list=[{**(request.metadata or {}), "title": request.title, "doc_id": doc_id}],
         )
-        return {"message": f"added {count} chunks", "title": request.title, "category": request.category}
+        if count == 0:
+            raise RuntimeError('未写入任何片段')
+        payload['chunk_count'] = count
+        await save('indexed')
+        return {"doc_id": doc_id, "message": f"added {count} chunks", "title": request.title, "category": request.category}
     except Exception as e:
-        logger.error(f"[RAG API] add failed: {str(e)}")
+        await save('failed', str(e))
+        logger.error("[RAG API] add failed")
         raise HTTPException(status_code=500, detail=str(e))
 
 

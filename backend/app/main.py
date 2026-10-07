@@ -3,6 +3,7 @@ backend/app/main.py
 FastAPI 应用入口
 """
 import logging
+import asyncio
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
@@ -11,7 +12,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 
 from app.config import get_settings
-from app.api import chat, agent, rag, llmops, data
+from app.api import chat, agent, rag, llmops, data, conversations, reports
 
 logging.basicConfig(
     level=logging.INFO,
@@ -26,6 +27,8 @@ settings = get_settings()
 async def lifespan(app: FastAPI):
     logger.info(f"Financial AI Agent v{settings.APP_VERSION} starting...")
     logger.info(f"LLM: {settings.LLM_MODEL}, VectorStore: {settings.VECTORSTORE_TYPE}")
+    from app.agents.orchestrator import get_orchestrator
+    await asyncio.to_thread(get_orchestrator().store.recover_interrupted)
     yield
     logger.info("Financial AI Agent shutting down...")
 
@@ -67,6 +70,8 @@ async def root():
 
 
 # 注册路由
+app.include_router(reports.router, prefix="/api/v1", tags=["报告"])
+app.include_router(conversations.router, prefix="/api/v1", tags=["历史对话"])
 app.include_router(chat.router, prefix="/api/v1", tags=["对话"])
 app.include_router(agent.router, prefix="/api/v1", tags=["Agent编排"])
 app.include_router(rag.router, prefix="/api/v1", tags=["RAG知识库"])

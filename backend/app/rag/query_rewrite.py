@@ -37,7 +37,7 @@ JSON格式输出：
             from langchain.schema import HumanMessage
             messages = [HumanMessage(content=self.REWRITE_PROMPT.format(original_query=query))]
             log = await self.llm.chat(messages, stream=False)
-            result_text = log.error or "{}"
+            result_text = log.content if log.success else "{}"
             json_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', result_text, re.DOTALL)
             if json_match:
                 return json.loads(json_match.group(0))

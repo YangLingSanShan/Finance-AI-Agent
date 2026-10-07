@@ -18,7 +18,8 @@ def check_regulatory_events(stock_code: str) -> str:
     return '[{"event": "处罚/诉讼事件", "date": "日期", "severity": "严重程度"}]'
 
 
-RISK_AGENT_SYSTEM_PROMPT = """你是专业金融⻛控专家，擅⻓⻛险量化、预警模型、合规审查。
+RISK_AGENT_SYSTEM_PROMPT = """当前金融工具返回的是演示数据，不是真实行情。使用工具结果时必须明确标记为演示，不能据此给出真实投资结论。
+你是专业金融⻛控专家，擅⻓⻛险量化、预警模型、合规审查。
 
 ⻛控框架：
 - 财务⻛险：盈利质量、现金流异常、债务结构

@@ -2,6 +2,8 @@
 backend/app/agents/base.py
 Agent 基类 - 基于 LangChain 实现通用 Agent 框架
 """
+import asyncio
+import json
 import uuid
 import time
 import logging
@@ -9,8 +11,10 @@ from typing import Dict, Any, List, Optional, AsyncIterator
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 
-from langchain.schema import HumanMessage, SystemMessage, AIMessage, BaseMessage
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, BaseMessage, ToolMessage
 from langchain.tools import BaseTool
+from langchain_core.utils.function_calling import convert_to_openai_tool
+from app.config import get_settings
 
 from app.models.schemas import AgentType
 from app.core.llm import LLMService, get_llm_service
@@ -66,61 +70,67 @@ class BaseAgent(ABC):
         self, task: str,
         context: Optional[Dict[str, Any]] = None,
         session_id: Optional[str] = None,
+        history: Optional[List[BaseMessage]] = None,
     ) -> AgentExecutionResult:
         task_id = str(uuid.uuid4())
         start_time = time.time()
         total_tokens = 0
-
-        logger.info(f"[Agent:{self.config.name}] executing task_id={task_id}")
-
+        iterations = 0
+        trace = []
         try:
-            prompt_content = self._build_system_prompt()
+            prompt = self._build_system_prompt()
             if context:
-                context_str = self._format_context(context)
-                prompt_content += f"\n\n## Context\n{context_str}"
-            prompt_content += f"\n\n## Task\n{task}"
-
-            messages = [
-                SystemMessage(content=prompt_content),
-                HumanMessage(content=task),
-            ]
-
+                prompt += f"\n\n## Context\n{self._format_context(context)}"
+            messages = [SystemMessage(content=prompt), *(history or []), HumanMessage(content=task)]
             tools_json = self._tools_to_json(self.config.tools)
-            if tools_json:
-                call_log = await self.llm.chat(messages=messages, tools=tools_json, stream=False)
-                if not call_log.success:
-                    raise Exception(f"LLM failed: {call_log.error}")
-                total_tokens = call_log.total_tokens
-                agent_output = f"[tools executed]\n{call_log.error or 'done'}"
-            else:
-                call_log = await self.llm.chat(messages=messages, stream=False)
-                if not call_log.success:
-                    raise Exception(f"LLM failed: {call_log.error}")
-                total_tokens = call_log.total_tokens
-                agent_output = str(call_log.error or "done")
-
-            parsed = self._parse_output(agent_output)
-            execution_time = (time.time() - start_time) * 1000
-
-            self._execution_history.append({
-                "task_id": task_id, "task": task, "output": agent_output,
-                "parsed": parsed, "tokens": total_tokens,
-                "execution_time_ms": execution_time,
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            })
-
+            tools_by_name = {tool.name: tool for tool in self.config.tools}
+            for iterations in range(1, self.config.max_iterations + 1):
+                result = await self.llm.chat(list(messages), tools=tools_json or None, stream=False)
+                total_tokens += result.total_tokens
+                if not result.success:
+                    raise RuntimeError(f"LLM failed: {result.error}")
+                message = result.message or AIMessage(content=result.content)
+                if message.invalid_tool_calls:
+                    raise RuntimeError("模型返回了无效的工具参数，请重试")
+                messages.append(message)
+                if not message.tool_calls:
+                    if not result.content.strip():
+                        raise RuntimeError("模型未返回回答内容")
+                    output = result.content
+                    self._execution_history.append({
+                        "task_id": task_id, "task": task, "output": output,
+                        "parsed": self._parse_output(output), "tokens": total_tokens,
+                        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                    })
+                    return AgentExecutionResult(
+                        success=True, output=output, tool_calls=trace, iterations=iterations,
+                        total_tokens=total_tokens, execution_time_ms=(time.time() - start_time) * 1000,
+                    )
+                for call in message.tool_calls:
+                    name = call["name"]
+                    record = {"id": call["id"], "name": name, "args": call["args"]}
+                    try:
+                        if name not in tools_by_name:
+                            raise ValueError(f"未知工具: {name}")
+                        value = await asyncio.wait_for(
+                            tools_by_name[name].ainvoke(call["args"]),
+                            timeout=get_settings().AGENT_TOOL_CALL_TIMEOUT,
+                        )
+                        content = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+                        record.update(success=True, result=content)
+                    except Exception as exc:
+                        error = "工具执行超时" if isinstance(exc, asyncio.TimeoutError) else str(exc)
+                        content = json.dumps({"error": error}, ensure_ascii=False)
+                        record.update(success=False, error=error)
+                    trace.append(record)
+                    messages.append(ToolMessage(content=content, tool_call_id=call["id"], name=name))
+            raise RuntimeError(f"达到最大模型调用次数 ({self.config.max_iterations})，未获得最终回答")
+        except Exception as exc:
+            logger.warning("[Agent:%s] execution failed: %s", self.config.name, exc)
             return AgentExecutionResult(
-                success=True, output=agent_output, iterations=1,
-                total_tokens=total_tokens, execution_time_ms=execution_time,
-            )
-
-        except Exception as e:
-            execution_time = (time.time() - start_time) * 1000
-            logger.error(f"[Agent:{self.config.name}] failed: {str(e)}", exc_info=True)
-            return AgentExecutionResult(
-                success=False, output="", error=str(e),
-                iterations=0, total_tokens=total_tokens,
-                execution_time_ms=execution_time,
+                success=False, output="", error=str(exc), tool_calls=trace,
+                iterations=iterations, total_tokens=total_tokens,
+                execution_time_ms=(time.time() - start_time) * 1000,
             )
 
     async def execute_stream(
@@ -141,7 +151,11 @@ class BaseAgent(ABC):
     def _format_context(self, context: Dict[str, Any]) -> str:
         lines = []
         for key, value in context.items():
-            if isinstance(value, list):
+            if key == 'agent_results':
+                continue  # Dependent outputs are provided in the explicit *_result fields.
+            if key.endswith('_result'):
+                lines.append(f"### {key}\n{value}")
+            elif isinstance(value, list):
                 lines.append(f"### {key}")
                 for item in value:
                     if isinstance(item, dict):
@@ -157,17 +171,7 @@ class BaseAgent(ABC):
         return "\n".join(lines)
 
     def _tools_to_json(self, tools: List[BaseTool]) -> List[Dict]:
-        result = []
-        for tool in tools:
-            result.append({
-                "type": "function",
-                "function": {
-                    "name": tool.name,
-                    "description": tool.description,
-                    "parameters": {"type": "object", "properties": {}, "required": []},
-                },
-            })
-        return result
+        return [convert_to_openai_tool(tool) for tool in tools]
 
     def get_execution_history(self) -> List[Dict]:
         return self._execution_history

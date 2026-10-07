@@ -3,8 +3,9 @@ backend/app/config.py
 全局配置管理 - 使用 Pydantic Settings
 """
 from pydantic_settings import BaseSettings
-from typing import Optional
+from typing import Optional, Literal
 from functools import lru_cache
+from pathlib import Path
 
 
 class Settings(BaseSettings):
@@ -40,6 +41,7 @@ class Settings(BaseSettings):
 
     # === 数据库配置 ===
     DATABASE_URL: str = "postgresql+asyncpg://user:pass@localhost:5432/financial_agent"
+    BUSINESS_STORAGE: Literal["sqlite", "postgresql"] = "sqlite"
     DATABASE_POOL_SIZE: int = 20
     DATABASE_MAX_OVERFLOW: int = 10
 
@@ -47,6 +49,8 @@ class Settings(BaseSettings):
     VECTORSTORE_TYPE: str = "chroma"
     CHROMA_PERSIST_DIR: str = "./data/chromadb"
     CHROMA_COLLECTION_NAME: str = "financial_knowledge"
+
+    CHAT_HISTORY_DB: str = str(Path(__file__).resolve().parents[1] / "data" / "conversations.sqlite3")
 
     # === Redis 配置 ===
     REDIS_HOST: str = "localhost"
@@ -85,7 +89,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:5173"]
 
     class Config:
-        env_file = ".env"
+        env_file = Path(__file__).resolve().parents[2] / ".env"
         env_file_encoding = "utf-8"
         extra = "allow"
 

@@ -45,7 +45,10 @@ class ChatResponse(BaseModel):
     sources: Optional[List[Dict[str, Any]]] = None
     token_usage: Optional[Dict[str, int]] = None
     latency_ms: Optional[float] = None
+    model: str = ""
+    report_id: Optional[str] = None
     session_created: bool = False
+    tool_calls: List[Dict[str, Any]] = Field(default_factory=list)
 
 
 class AgentInvokeRequest(BaseModel):

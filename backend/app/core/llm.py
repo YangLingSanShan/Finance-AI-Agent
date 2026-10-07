@@ -8,7 +8,7 @@ from typing import Optional, AsyncIterator, Any, Dict, List
 from dataclasses import dataclass
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.schema import BaseMessage, HumanMessage, SystemMessage
+from langchain.schema import AIMessage, BaseMessage, HumanMessage, SystemMessage
 
 from app.config import get_settings
 
@@ -27,6 +27,9 @@ class LLMCallLog:
     timestamp: str
     success: bool
     error: Optional[str] = None
+    content: str = ""
+    message: Optional[AIMessage] = None
+    usage_estimated: bool = False
 
 
 class TokenCostCalculator:
@@ -70,7 +73,9 @@ class LLMService:
                 temperature=self.settings.LLM_TEMPERATURE,
                 max_tokens=self.settings.LLM_MAX_TOKENS,
                 timeout=self.settings.LLM_TIMEOUT,
-                streaming=True,
+                streaming=False,
+                extra_body={"thinking": {"type": "disabled"}}
+                if self.settings.LLM_MODEL.startswith("deepseek") else None,
             )
         return self._llm
 
@@ -82,7 +87,10 @@ class LLMService:
                 model=self.settings.EMBEDDING_MODEL,
                 api_key=self.settings.EMBEDDING_API_KEY,
                 base_url=self.settings.EMBEDDING_API_BASE,
-                batch_size=self.settings.EMBEDDING_BATCH_SIZE,
+                dimensions=self.settings.EMBEDDING_DIM,
+                chunk_size=self.settings.EMBEDDING_BATCH_SIZE,
+                check_embedding_ctx_length=False,
+                model_kwargs={"encoding_format": "float"},
             )
         return self._embeddings
 
@@ -91,28 +99,32 @@ class LLMService:
         messages: List[BaseMessage],
         tools: Optional[List[Dict]] = None,
         tool_choice: Optional[str] = None,
-        stream: bool = True,
+        stream: bool = False,
     ) -> LLMCallLog:
         """通用对话接口"""
         start_time = time.time()
 
         try:
             if tools:
-                response = await self.llm.bind_tools(tools).ainvoke(messages)
+                response = await self.llm.bind_tools(tools, **({"tool_choice": tool_choice} if tool_choice else {})).ainvoke(messages)
             else:
                 response = await self.llm.ainvoke(messages)
 
             latency = (time.time() - start_time) * 1000
 
-            usage = getattr(response, "usage", None)
-            if usage:
-                prompt_tokens = getattr(usage, "prompt_tokens", 0)
-                completion_tokens = getattr(usage, "completion_tokens", 0)
-                total_tokens = getattr(usage, "total_tokens", 0)
+            usage = response.usage_metadata
+            if usage is not None:
+                prompt_tokens = usage["input_tokens"]
+                completion_tokens = usage["output_tokens"]
+                total_tokens = usage["total_tokens"]
             else:
                 prompt_tokens = sum(len(str(m.content)) for m in messages) // 4
                 completion_tokens = len(str(response.content)) // 4
                 total_tokens = prompt_tokens + completion_tokens
+            content = response.content
+            if not isinstance(content, str):
+                content = "".join(block.get("text", "") if isinstance(block, dict) else str(block)
+                                  for block in content)
 
             cost = TokenCostCalculator.calculate(
                 self.settings.LLM_MODEL, prompt_tokens, completion_tokens
@@ -126,7 +138,8 @@ class LLMService:
                 latency_ms=latency,
                 cost_usd=cost,
                 timestamp=time.strftime("%Y-%m-%d %H:%M:%S"),
-                success=True,
+                success=True, content=content, message=response,
+                usage_estimated=usage is None,
             )
 
             logger.info(
