@@ -4,6 +4,7 @@ LLM 大模型统一调用接口 - 支持多模型供应商
 """
 import time
 import logging
+import math
 from typing import Optional, AsyncIterator, Any, Dict, List
 from dataclasses import dataclass
 
@@ -13,6 +14,8 @@ from langchain.schema import AIMessage, BaseMessage, HumanMessage, SystemMessage
 from app.config import get_settings
 
 logger = logging.getLogger(__name__)
+
+EMBEDDING_PROVIDER_MAX_BATCH_SIZE = 20
 
 
 @dataclass
@@ -88,7 +91,7 @@ class LLMService:
                 api_key=self.settings.EMBEDDING_API_KEY,
                 base_url=self.settings.EMBEDDING_API_BASE,
                 dimensions=self.settings.EMBEDDING_DIM,
-                chunk_size=self.settings.EMBEDDING_BATCH_SIZE,
+                chunk_size=min(self.settings.EMBEDDING_BATCH_SIZE, EMBEDDING_PROVIDER_MAX_BATCH_SIZE),
                 check_embedding_ctx_length=False,
                 model_kwargs={"encoding_format": "float"},
             )
@@ -207,10 +210,15 @@ class LLMService:
         """文本向量化"""
         try:
             embeddings = await self.embeddings.aembed_documents(texts)
+            if len(embeddings) != len(texts) or any(
+                len(vector) != self.settings.EMBEDDING_DIM or
+                not all(math.isfinite(value) for value in vector) for vector in embeddings
+            ):
+                raise ValueError('Embedding 返回数量、维度或数值不合法')
             logger.info(f"[Embedding] texts={len(texts)} dim={len(embeddings[0]) if embeddings else 0}")
             return embeddings
         except Exception as e:
-            logger.error(f"[Embedding] 失败: {str(e)}")
+            logger.error('[Embedding] 失败: %s', type(e).__name__)
             raise
 
 

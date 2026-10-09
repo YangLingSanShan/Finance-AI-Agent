@@ -36,3 +36,27 @@ async def test_embedding_sends_text_dimensions_and_batches():
         assert call.kwargs['dimensions'] == 1024
         assert call.kwargs['encoding_format'] == 'float'
         assert 'batch_size' not in call.kwargs
+
+
+async def test_embedding_rejects_wrong_dimensions_and_nonfinite_values():
+    import pytest
+    service = LLMService()
+    service.settings = SimpleNamespace(EMBEDDING_DIM=2)
+    service._embeddings = AsyncMock()
+    for vectors in ([], [[1.]], [[float('nan'), 0.]], [[float('inf'), 0.]]):
+        service._embeddings.aembed_documents.return_value = vectors
+        with pytest.raises(ValueError, match='Embedding'):
+            await service.embed(['text'])
+
+
+async def test_embedding_caps_provider_batch_size():
+    service = LLMService()
+    service.settings = SimpleNamespace(
+        EMBEDDING_MODEL='qwen3.7-text-embedding',
+        EMBEDDING_API_KEY='test-key',
+        EMBEDDING_API_BASE='https://example.invalid/v1',
+        EMBEDDING_DIM=2,
+        EMBEDDING_BATCH_SIZE=100,
+    )
+    embeddings = service.embeddings
+    assert embeddings.chunk_size == 20

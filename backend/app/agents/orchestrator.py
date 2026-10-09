@@ -197,6 +197,13 @@ class AgentOrchestrator:
 
         # Only successful answers become conversational history.
         success = bool(agent_results) and all(r.success for r in agent_results.values())
+        if success and report_id and (context or {}).get('rag_context'):
+            # Keep downloaded reports self-contained with the exact evidence used by every role.
+            appendix = ['\n\n---\n\n## 本轮知识库来源证据\n']
+            for source in context['rag_context']:
+                appendix.append(source.get('label', source['citation']))
+                appendix.append(source['content'])
+            final_response += '\n\n'.join(appendix)
         turn = None
         if success:
             turn = {

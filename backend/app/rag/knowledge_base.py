@@ -3,6 +3,7 @@ backend/app/rag/knowledge_base.py
 RAG 知识库管理 - 文档加载、分块、索引
 """
 import uuid
+import asyncio
 import hashlib
 import logging
 from typing import List, Dict, Any, Optional
@@ -43,6 +44,11 @@ class KnowledgeBaseManager:
         self._collection = None
 
     @property
+    def index_profile(self):
+        identity = f'{self.settings.EMBEDDING_API_BASE}|{self.settings.EMBEDDING_MODEL}|{self.settings.EMBEDDING_DIM}'
+        return hashlib.sha256(identity.encode()).hexdigest()[:16]
+
+    @property
     def collection(self):
         if self._collection is None:
             try:
@@ -53,7 +59,7 @@ class KnowledgeBaseManager:
                     settings=ChromaSettings(anonymized_telemetry=False)
                 )
                 self._collection = client.get_or_create_collection(
-                    name=self.settings.CHROMA_COLLECTION_NAME,
+                    name=f"{self.settings.CHROMA_COLLECTION_NAME}_{self.index_profile}",
                     metadata={"hnsw:space": "cosine"}
                 )
                 logger.info(f"[KB] ChromaDB initialized: {self.settings.CHROMA_COLLECTION_NAME}")
@@ -67,9 +73,9 @@ class KnowledgeBaseManager:
         chunk_size: int = 500, chunk_overlap: int = 50,
     ) -> List[ChunkResult]:
         """文档分块"""
-        self.text_splitter.chunk_size = chunk_size
-        self.text_splitter.chunk_overlap = chunk_overlap
-        chunks = self.text_splitter.split_documents(documents)
+        splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap,
+            separators=["\n\n", "\n", "。", "；", "，", " ", ""])
+        chunks = splitter.split_documents(documents)
         results = []
         for i, chunk in enumerate(chunks):
             chunk_id = str(uuid.uuid4())
@@ -87,7 +93,7 @@ class KnowledgeBaseManager:
         return results
 
     async def add_chunks_to_vectorstore(
-        self, chunks: List[ChunkResult], batch_size: int = 100,
+        self, chunks: List[ChunkResult], batch_size: int = 20,
     ) -> int:
         """将文档块添加到向量存储"""
         if not self.collection:
@@ -104,7 +110,10 @@ class KnowledgeBaseManager:
             batch_metas = metadatas[i:i + batch_size]
             batch_ids = ids[i:i + batch_size]
             embeddings = await self.llm.embed(batch_texts)
-            self.collection.add(embeddings=embeddings, documents=batch_texts, metadatas=batch_metas, ids=batch_ids)
+            if len(embeddings) != len(batch_texts):
+                raise RuntimeError('Embedding 返回数量与文本数量不一致')
+            await asyncio.to_thread(self.collection.upsert, embeddings=embeddings, documents=batch_texts,
+                                    metadatas=batch_metas, ids=batch_ids)
             total_added += len(batch_texts)
 
         logger.info(f"[KB] added {total_added} chunks to vectorstore")

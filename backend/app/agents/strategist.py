@@ -5,9 +5,11 @@ backend/app/agents/strategist.py
 from typing import Dict, Any
 from app.agents.base import BaseAgent, AgentConfig, AgentExecutionResult
 from app.models.schemas import AgentType
+from app.market.data import DATA_POLICY
 
 
-STRATEGIST_SYSTEM_PROMPT = """必须基于本轮上游分析综合输出，保留来源和数据日期；上游标为演示的数据必须继续标为演示，不得编造事实或来源。
+STRATEGIST_SYSTEM_PROMPT = DATA_POLICY + """
+必须基于本轮上游分析综合输出，保留来源和数据日期；上游标为演示的数据必须继续标为演示，不得编造事实或来源。
 
 你是资深量化投资策略师，精通多因子模型、资产配置。
 

@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = "text-embedding-3-large"
     EMBEDDING_API_BASE: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
     EMBEDDING_API_KEY: str = ""
-    EMBEDDING_BATCH_SIZE: int = 100
+    EMBEDDING_BATCH_SIZE: int = 20
     EMBEDDING_DIM: int = 1536
 
     # === 数据库配置 ===
@@ -60,6 +60,7 @@ class Settings(BaseSettings):
     REDIS_MAX_CONNECTIONS: int = 50
 
     # === RAG 配置 ===
+    RAG_RERANK_MODEL: str = ""  # Local CrossEncoder path; no automatic downloads
     RAG_TOP_K: int = 10
     RAG_SCORE_THRESHOLD: float = 0.5
     RAG_RERANK_TOP_K: int = 5

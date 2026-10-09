@@ -59,7 +59,7 @@ class AgentInvokeRequest(BaseModel):
 
 
 class RAGQueryRequest(BaseModel):
-    query: str
+    query: str = Field(..., min_length=1, max_length=4000)
     top_k: int = Field(default=10, ge=1, le=100)
     score_threshold: float = Field(default=0.5, ge=0, le=1)
     filters: Optional[Dict[str, Any]] = None

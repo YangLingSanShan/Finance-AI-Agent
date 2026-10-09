@@ -1,3 +1,5 @@
+-- PDF 设计留档，当前业务表以 app/storage/schema.py 和 schema 版本迁移为准。
+-- 不要使用本文件替代 python -m app.storage.migrate 初始化业务存储。
 -- 用戶表
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,

@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from app.agents.orchestrator import get_orchestrator
 from app.models.schemas import AgentType
 from app.config import get_settings
+from app.market.data import DATA_POLICY
 
 router = APIRouter(prefix='/reports')
 logger = logging.getLogger(__name__)
@@ -21,10 +22,14 @@ class ReportRequest(BaseModel):
 async def generate(report, enable_rag):
     orchestrator = get_orchestrator()
     try:
-        context = {'data_note': '当前金融工具为演示数据，报告必须明确标注。不得编造数据日期与来源。'}
+        context = {'data_note': DATA_POLICY}
         if enable_rag:
-            from app.rag.retriever import get_hybrid_retriever
-            context['rag_context'] = await get_hybrid_retriever().retrieve(report['query'], top_k=5)
+            from app.rag.retriever import get_hybrid_retriever, evidence_context
+            try:
+                context['rag_context'] = evidence_context(await get_hybrid_retriever().retrieve(
+                    report['query'], top_k=5, filters={'stock_code': report['stock_code']}))
+            except Exception as exc:
+                raise RuntimeError('知识库检索服务暂不可用，请稍后重新提交报告') from exc
         await orchestrator.run(query=report['query'], session_id=report['session_id'],
             agent_types=[AgentType.REPORT], parallel=True, context=context, report_id=report['id'])
     except BaseException as exc:

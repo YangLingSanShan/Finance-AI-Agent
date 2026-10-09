@@ -1,0 +1,38 @@
+[
+  {
+    "file": "600519.pdf",
+    "title": "贵州茅台2025年中期利润分配方案公告",
+    "category": "announcement",
+    "metadata": {
+      "stock_code": "600519",
+      "report_period": "2025中期",
+      "disclosure_date": "2025-11-06",
+      "source_url": "https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-11-06/600519_20251106_XHPX.pdf"
+    },
+    "sha256": "5ec98e5a3819395af3d3d949031ed68f4c26c5d79423b7a25f71721142b2824f"
+  },
+  {
+    "file": "600036.pdf",
+    "title": "招商银行2025年度利润分配方案公告",
+    "category": "announcement",
+    "metadata": {
+      "stock_code": "600036",
+      "report_period": "2025年度",
+      "disclosure_date": "2026-03-27",
+      "source_url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032703210_c.pdf"
+    },
+    "sha256": "853e82ca620c640a8421680b2268f3602ecda3388d34e1e754136027ab94d7bf"
+  },
+  {
+    "file": "601318.pdf",
+    "title": "中国平安2025年中期利润分配方案公告",
+    "category": "announcement",
+    "metadata": {
+      "stock_code": "601318",
+      "report_period": "2025中期",
+      "disclosure_date": "2025-08-26",
+      "source_url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0826/2025082601476_c.pdf"
+    },
+    "sha256": "db9b322d0afa8370000dc32e0002ef9734a3bde0733559e8828640827a2f2607"
+  }
+]

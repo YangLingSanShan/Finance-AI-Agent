@@ -6,19 +6,29 @@ from typing import Dict, Any
 from app.agents.base import BaseAgent, AgentConfig, AgentExecutionResult
 from app.models.schemas import AgentType
 from langchain.tools import tool
+import json
+from app.market import data as market
+from app.market import disclosures
 
 
 @tool(description="计算股票⻛险指标（波动率、VaR、Beta等）")
 def calculate_risk_metrics(stock_code: str, period: int = 60) -> str:
-    return '{"code": "stock_code", "volatility": 0.25, "var_95": -0.03, "beta": 1.2}'
+    return json.dumps(market.risk_metrics(stock_code, period), ensure_ascii=False, allow_nan=False)
 
 
-@tool(description="检查监管处罚和诉讼信息")
-def check_regulatory_events(stock_code: str) -> str:
-    return '[{"event": "处罚/诉讼事件", "date": "日期", "severity": "严重程度"}]'
+@tool(description="检索巨潮公司监管/诉讼公告标题，默认近3年；返回原文链接、日期和覆盖情况，start_page用于续查")
+def check_regulatory_events(stock_code: str, start_date: str = "", end_date: str = "", start_page: int = 1) -> str:
+    return json.dumps(disclosures.regulatory_events(stock_code, start_date or None, end_date or None, start_page), ensure_ascii=False)
 
 
-RISK_AGENT_SYSTEM_PROMPT = """当前金融工具返回的是演示数据，不是真实行情。使用工具结果时必须明确标记为演示，不能据此给出真实投资结论。
+@tool(description="读取公告检索返回的巨潮PDF原文，核实主体、诉讼阶段、处罚结果与金额；保留页码")
+def read_announcement(document_url: str) -> str:
+    return json.dumps(disclosures.announcement_content(document_url), ensure_ascii=False)
+
+
+RISK_AGENT_SYSTEM_PROMPT = market.DATA_POLICY + """
+风险指标单位为小数收益率；样本不足不得给出量化评分。
+监管与诉讼检索返回标题线索后，应读取相关公告原文；若无法读到原文，仅列线索，不断言具体违法、胜败诉或处罚金额。
 你是专业金融⻛控专家，擅⻓⻛险量化、预警模型、合规审查。
 
 ⻛控框架：
@@ -36,7 +46,7 @@ RISK_AGENT_SYSTEM_PROMPT = """当前金融工具返回的是演示数据，不�
 
 class RiskAgent(BaseAgent):
     def __init__(self):
-        tools = [calculate_risk_metrics, check_regulatory_events]
+        tools = [calculate_risk_metrics, check_regulatory_events, read_announcement]
         config = AgentConfig(
             name="⻛控预警Agent", agent_type=AgentType.RISK,
             description="⻛险识别、量化评估、预警监控",

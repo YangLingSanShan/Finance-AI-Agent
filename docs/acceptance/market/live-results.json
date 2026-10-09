@@ -1,0 +1,2205 @@
+{
+  "market": {
+    "status": "ok",
+    "indices": [
+      {
+        "status": "ok",
+        "is_demo": false,
+        "source": "腾讯证券",
+        "source_url": "https://qt.gtimg.cn/?q=sh000001%2Csz399001%2Csz399006",
+        "as_of": "2026-10-09T16:14:00+08:00",
+        "fetched_at": "2026-10-09T19:30:17.209616+08:00",
+        "warnings": [
+          "公开行情快照，可能延迟；非交易时间保留最近报价。"
+        ],
+        "data": {
+          "code": "000001",
+          "symbol": "sh000001",
+          "name": "上证指数",
+          "price": 3813.79,
+          "previous_close": 3811.9,
+          "open": 3804.09,
+          "volume": 535149921.0,
+          "volume_unit": "手",
+          "change_pct": 0.05,
+          "high": 3824.71,
+          "low": 3754.14,
+          "turnover_pct": 1.1,
+          "pe_ttm": 16.59,
+          "market_cap_100m_cny": 674203.09,
+          "pb": 0.0
+        }
+      },
+      {
+        "status": "ok",
+        "is_demo": false,
+        "source": "腾讯证券",
+        "source_url": "https://qt.gtimg.cn/?q=sh000001%2Csz399001%2Csz399006",
+        "as_of": "2026-10-09T16:14:30+08:00",
+        "fetched_at": "2026-10-09T19:30:17.209641+08:00",
+        "warnings": [
+          "公开行情快照，可能延迟；非交易时间保留最近报价。"
+        ],
+        "data": {
+          "code": "399001",
+          "symbol": "sz399001",
+          "name": "深证成指",
+          "price": 12641.86,
+          "previous_close": 12620.9,
+          "open": 12557.02,
+          "volume": 632657827.0,
+          "volume_unit": "手",
+          "change_pct": 0.17,
+          "high": 12679.63,
+          "low": 12278.78,
+          "turnover_pct": 2.56,
+          "pe_ttm": 39.77,
+          "market_cap_100m_cny": 416852.79,
+          "pb": 0.0
+        }
+      },
+      {
+        "status": "ok",
+        "is_demo": false,
+        "source": "腾讯证券",
+        "source_url": "https://qt.gtimg.cn/?q=sh000001%2Csz399001%2Csz399006",
+        "as_of": "2026-10-09T16:14:45+08:00",
+        "fetched_at": "2026-10-09T19:30:17.209655+08:00",
+        "warnings": [
+          "公开行情快照，可能延迟；非交易时间保留最近报价。"
+        ],
+        "data": {
+          "code": "399006",
+          "symbol": "sz399006",
+          "name": "创业板指",
+          "price": 3043.33,
+          "previous_close": 3036.66,
+          "open": 3021.33,
+          "volume": 191234801.0,
+          "volume_unit": "手",
+          "change_pct": 0.22,
+          "high": 3053.38,
+          "low": 2932.8,
+          "turnover_pct": 3.54,
+          "pe_ttm": 51.93,
+          "market_cap_100m_cny": 171929.03,
+          "pb": 0.0
+        }
+      }
+    ],
+    "missing": []
+  },
+  "quote": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://qt.gtimg.cn/?q=sh600519",
+    "as_of": "2026-10-09T16:14:59+08:00",
+    "fetched_at": "2026-10-09T19:30:17.274847+08:00",
+    "warnings": [
+      "公开行情快照，可能延迟；非交易时间保留最近报价。"
+    ],
+    "data": {
+      "code": "600519",
+      "symbol": "sh600519",
+      "name": "贵州茅台",
+      "price": 1263.0,
+      "previous_close": 1255.79,
+      "open": 1255.42,
+      "volume": 35111.0,
+      "volume_unit": "手",
+      "change_pct": 0.57,
+      "high": 1282.0,
+      "low": 1255.42,
+      "turnover_pct": 0.28,
+      "pe_ttm": 19.39,
+      "market_cap_100m_cny": 15788.53,
+      "pb": 6.28
+    }
+  },
+  "info": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_BASIC_ORGINFO&columns=ALL&filter=%28SECUCODE%3D%22600519.SH%22%29&source=HSF10&client=PC",
+    "as_of": null,
+    "fetched_at": "2026-10-09T19:30:17.421426+08:00",
+    "warnings": [
+      "公司资料快照，上游未提供资料更新时间；不将抓取时间当成资料更新时间。"
+    ],
+    "data": {
+      "code": "600519",
+      "name": "贵州茅台",
+      "company_name": "贵州茅台酒股份有限公司",
+      "industry": "食品饮料-饮料-白酒",
+      "listing_date": "2001-08-27",
+      "main_business": "茅台酒及系列酒的生产与销售",
+      "market": "上海证券交易所"
+    }
+  },
+  "kline": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600519%2Cday%2C%2C%2C60%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:17.546239+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": [
+      {
+        "date": "2026-07-10",
+        "open": 1182.2,
+        "close": 1204.98,
+        "high": 1204.98,
+        "low": 1170.28,
+        "volume": 52213.0
+      },
+      {
+        "date": "2026-07-13",
+        "open": 1197.12,
+        "close": 1210.99,
+        "high": 1215.0,
+        "low": 1190.19,
+        "volume": 41983.0
+      },
+      {
+        "date": "2026-07-14",
+        "open": 1208.99,
+        "close": 1214.88,
+        "high": 1226.87,
+        "low": 1205.0,
+        "volume": 43527.0
+      },
+      {
+        "date": "2026-07-15",
+        "open": 1203.66,
+        "close": 1251.06,
+        "high": 1256.6,
+        "low": 1198.66,
+        "volume": 71944.0
+      },
+      {
+        "date": "2026-07-16",
+        "open": 1252.0,
+        "close": 1258.99,
+        "high": 1267.97,
+        "low": 1245.05,
+        "volume": 47611.0
+      },
+      {
+        "date": "2026-07-17",
+        "open": 1269.01,
+        "close": 1253.0,
+        "high": 1269.33,
+        "low": 1238.98,
+        "volume": 58417.0
+      },
+      {
+        "date": "2026-07-20",
+        "open": 1270.0,
+        "close": 1327.5,
+        "high": 1329.0,
+        "low": 1266.0,
+        "volume": 106151.0
+      },
+      {
+        "date": "2026-07-21",
+        "open": 1338.98,
+        "close": 1308.0,
+        "high": 1344.7,
+        "low": 1296.87,
+        "volume": 77148.0
+      },
+      {
+        "date": "2026-07-22",
+        "open": 1300.0,
+        "close": 1305.0,
+        "high": 1308.0,
+        "low": 1283.24,
+        "volume": 65181.0
+      },
+      {
+        "date": "2026-07-23",
+        "open": 1299.8,
+        "close": 1292.01,
+        "high": 1303.0,
+        "low": 1285.43,
+        "volume": 33918.0
+      },
+      {
+        "date": "2026-07-24",
+        "open": 1305.0,
+        "close": 1297.41,
+        "high": 1309.21,
+        "low": 1286.2,
+        "volume": 35699.0
+      },
+      {
+        "date": "2026-07-27",
+        "open": 1308.0,
+        "close": 1289.5,
+        "high": 1308.0,
+        "low": 1279.58,
+        "volume": 31990.0
+      },
+      {
+        "date": "2026-07-28",
+        "open": 1299.0,
+        "close": 1320.0,
+        "high": 1320.0,
+        "low": 1289.52,
+        "volume": 53135.0
+      },
+      {
+        "date": "2026-07-29",
+        "open": 1333.83,
+        "close": 1321.0,
+        "high": 1343.48,
+        "low": 1312.06,
+        "volume": 62330.0
+      },
+      {
+        "date": "2026-07-30",
+        "open": 1323.0,
+        "close": 1361.76,
+        "high": 1362.0,
+        "low": 1322.0,
+        "volume": 71873.0
+      },
+      {
+        "date": "2026-07-31",
+        "open": 1330.03,
+        "close": 1350.6,
+        "high": 1355.72,
+        "low": 1325.77,
+        "volume": 55128.0
+      },
+      {
+        "date": "2026-08-03",
+        "open": 1350.6,
+        "close": 1358.98,
+        "high": 1363.35,
+        "low": 1346.0,
+        "volume": 36147.0
+      },
+      {
+        "date": "2026-08-04",
+        "open": 1350.06,
+        "close": 1328.36,
+        "high": 1350.94,
+        "low": 1328.36,
+        "volume": 37450.0
+      },
+      {
+        "date": "2026-08-05",
+        "open": 1328.36,
+        "close": 1306.45,
+        "high": 1333.8,
+        "low": 1303.5,
+        "volume": 42689.0
+      },
+      {
+        "date": "2026-08-06",
+        "open": 1310.0,
+        "close": 1308.55,
+        "high": 1314.4,
+        "low": 1300.01,
+        "volume": 25463.0
+      },
+      {
+        "date": "2026-08-07",
+        "open": 1308.66,
+        "close": 1309.22,
+        "high": 1315.28,
+        "low": 1301.0,
+        "volume": 24976.0
+      },
+      {
+        "date": "2026-08-10",
+        "open": 1325.0,
+        "close": 1348.86,
+        "high": 1359.97,
+        "low": 1318.08,
+        "volume": 62686.0
+      },
+      {
+        "date": "2026-08-11",
+        "open": 1348.0,
+        "close": 1346.5,
+        "high": 1352.65,
+        "low": 1338.0,
+        "volume": 27073.0
+      },
+      {
+        "date": "2026-08-12",
+        "open": 1346.5,
+        "close": 1343.0,
+        "high": 1356.88,
+        "low": 1332.51,
+        "volume": 35060.0
+      },
+      {
+        "date": "2026-08-13",
+        "open": 1338.0,
+        "close": 1355.29,
+        "high": 1359.6,
+        "low": 1337.0,
+        "volume": 32353.0
+      },
+      {
+        "date": "2026-08-14",
+        "open": 1355.0,
+        "close": 1341.99,
+        "high": 1359.0,
+        "low": 1338.14,
+        "volume": 29853.0
+      },
+      {
+        "date": "2026-08-17",
+        "open": 1295.0,
+        "close": 1293.09,
+        "high": 1301.0,
+        "low": 1280.34,
+        "volume": 78430.0
+      },
+      {
+        "date": "2026-08-18",
+        "open": 1291.0,
+        "close": 1297.99,
+        "high": 1302.9,
+        "low": 1285.17,
+        "volume": 38723.0
+      },
+      {
+        "date": "2026-08-19",
+        "open": 1300.0,
+        "close": 1307.88,
+        "high": 1308.88,
+        "low": 1290.5,
+        "volume": 37548.0
+      },
+      {
+        "date": "2026-08-20",
+        "open": 1299.8,
+        "close": 1291.5,
+        "high": 1306.88,
+        "low": 1291.0,
+        "volume": 25332.0
+      },
+      {
+        "date": "2026-08-21",
+        "open": 1291.5,
+        "close": 1272.83,
+        "high": 1291.5,
+        "low": 1272.01,
+        "volume": 33472.0
+      },
+      {
+        "date": "2026-08-24",
+        "open": 1271.01,
+        "close": 1304.66,
+        "high": 1313.8,
+        "low": 1270.33,
+        "volume": 48440.0
+      },
+      {
+        "date": "2026-08-25",
+        "open": 1311.89,
+        "close": 1304.0,
+        "high": 1317.0,
+        "low": 1301.11,
+        "volume": 21111.0
+      },
+      {
+        "date": "2026-08-26",
+        "open": 1300.0,
+        "close": 1302.8,
+        "high": 1314.45,
+        "low": 1295.0,
+        "volume": 21731.0
+      },
+      {
+        "date": "2026-08-27",
+        "open": 1304.0,
+        "close": 1292.3,
+        "high": 1305.0,
+        "low": 1288.0,
+        "volume": 24767.0
+      },
+      {
+        "date": "2026-08-28",
+        "open": 1289.0,
+        "close": 1297.4,
+        "high": 1297.89,
+        "low": 1288.0,
+        "volume": 16126.0
+      },
+      {
+        "date": "2026-08-31",
+        "open": 1297.99,
+        "close": 1299.52,
+        "high": 1305.0,
+        "low": 1286.0,
+        "volume": 23248.0
+      },
+      {
+        "date": "2026-09-01",
+        "open": 1295.0,
+        "close": 1299.56,
+        "high": 1307.99,
+        "low": 1286.1,
+        "volume": 32664.0
+      },
+      {
+        "date": "2026-09-02",
+        "open": 1302.8,
+        "close": 1297.5,
+        "high": 1303.0,
+        "low": 1291.2,
+        "volume": 20308.0
+      },
+      {
+        "date": "2026-09-03",
+        "open": 1297.5,
+        "close": 1298.88,
+        "high": 1305.0,
+        "low": 1293.02,
+        "volume": 17748.0
+      },
+      {
+        "date": "2026-09-04",
+        "open": 1295.88,
+        "close": 1330.0,
+        "high": 1338.86,
+        "low": 1295.6,
+        "volume": 45416.0
+      },
+      {
+        "date": "2026-09-07",
+        "open": 1324.0,
+        "close": 1316.01,
+        "high": 1333.6,
+        "low": 1312.66,
+        "volume": 25250.0
+      },
+      {
+        "date": "2026-09-08",
+        "open": 1318.0,
+        "close": 1309.3,
+        "high": 1323.0,
+        "low": 1309.05,
+        "volume": 17534.0
+      },
+      {
+        "date": "2026-09-09",
+        "open": 1305.01,
+        "close": 1290.88,
+        "high": 1309.3,
+        "low": 1286.68,
+        "volume": 32226.0
+      },
+      {
+        "date": "2026-09-10",
+        "open": 1291.0,
+        "close": 1285.13,
+        "high": 1294.99,
+        "low": 1282.0,
+        "volume": 18900.0
+      },
+      {
+        "date": "2026-09-11",
+        "open": 1285.15,
+        "close": 1275.16,
+        "high": 1286.15,
+        "low": 1263.01,
+        "volume": 34801.0
+      },
+      {
+        "date": "2026-09-14",
+        "open": 1277.27,
+        "close": 1277.96,
+        "high": 1285.53,
+        "low": 1270.36,
+        "volume": 16571.0
+      },
+      {
+        "date": "2026-09-15",
+        "open": 1281.0,
+        "close": 1272.75,
+        "high": 1284.5,
+        "low": 1271.28,
+        "volume": 13762.0
+      },
+      {
+        "date": "2026-09-16",
+        "open": 1273.93,
+        "close": 1258.0,
+        "high": 1274.98,
+        "low": 1254.1,
+        "volume": 26235.0
+      },
+      {
+        "date": "2026-09-17",
+        "open": 1257.98,
+        "close": 1266.98,
+        "high": 1267.6,
+        "low": 1254.0,
+        "volume": 17554.0
+      },
+      {
+        "date": "2026-09-18",
+        "open": 1262.99,
+        "close": 1257.12,
+        "high": 1265.88,
+        "low": 1256.1,
+        "volume": 24891.0
+      },
+      {
+        "date": "2026-09-21",
+        "open": 1259.0,
+        "close": 1252.57,
+        "high": 1259.95,
+        "low": 1250.8,
+        "volume": 25017.0
+      },
+      {
+        "date": "2026-09-22",
+        "open": 1252.15,
+        "close": 1253.8,
+        "high": 1265.88,
+        "low": 1248.1,
+        "volume": 24573.0
+      },
+      {
+        "date": "2026-09-23",
+        "open": 1255.03,
+        "close": 1251.24,
+        "high": 1271.5,
+        "low": 1250.89,
+        "volume": 30981.0
+      },
+      {
+        "date": "2026-09-24",
+        "open": 1250.01,
+        "close": 1237.0,
+        "high": 1256.13,
+        "low": 1231.05,
+        "volume": 31239.0
+      },
+      {
+        "date": "2026-09-28",
+        "open": 1236.0,
+        "close": 1243.88,
+        "high": 1244.01,
+        "low": 1228.1,
+        "volume": 28218.0
+      },
+      {
+        "date": "2026-09-29",
+        "open": 1244.6,
+        "close": 1235.58,
+        "high": 1245.87,
+        "low": 1230.88,
+        "volume": 26366.0
+      },
+      {
+        "date": "2026-09-30",
+        "open": 1239.53,
+        "close": 1258.62,
+        "high": 1268.0,
+        "low": 1236.05,
+        "volume": 38331.0
+      },
+      {
+        "date": "2026-10-08",
+        "open": 1252.9,
+        "close": 1255.79,
+        "high": 1258.0,
+        "low": 1242.0,
+        "volume": 25168.0
+      },
+      {
+        "date": "2026-10-09",
+        "open": 1255.42,
+        "close": 1263.0,
+        "high": 1282.0,
+        "low": 1255.42,
+        "volume": 35111.0
+      }
+    ],
+    "code": "600519",
+    "adjustment": "qfq",
+    "price_unit": "CNY",
+    "volume_unit": "手"
+  },
+  "financials": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_FINANCE_MAINFINADATA&columns=ALL&filter=%28SECUCODE%3D%22600519.SH%22%29&pageNumber=1&pageSize=20&sortTypes=-1&sortColumns=REPORT_DATE&source=HSF10&client=PC",
+    "as_of": "2026-06-30",
+    "fetched_at": "2026-10-09T19:30:17.724698+08:00",
+    "warnings": [
+      "金额单位为元；比率单位为%；净利润为归母净利润；quarterly 为年初至报告期累计值，非单季值。",
+      "null 表示未披露或不可用，不代表零。"
+    ],
+    "data": [
+      {
+        "report_date": "2026-06-30",
+        "disclosure_date": "2026-08-15",
+        "currency": "CNY",
+        "revenue": 92278072083.21,
+        "net_profit": 44516880421.86,
+        "roe_pct": 16.75,
+        "gross_margin_pct": 89.5552128279,
+        "debt_ratio_pct": 15.1931121807,
+        "revenue_yoy_pct": 1.300099475569,
+        "profit_yoy_pct": -1.951594855028,
+        "operating_cashflow": 70690750119.06
+      },
+      {
+        "report_date": "2026-03-31",
+        "disclosure_date": "2026-04-25",
+        "currency": "CNY",
+        "revenue": 54702912385.23,
+        "net_profit": 27242512886.45,
+        "roe_pct": 10.57,
+        "gross_margin_pct": 89.7592176242,
+        "debt_ratio_pct": 12.1227489682,
+        "revenue_yoy_pct": 6.336009277123,
+        "profit_yoy_pct": 1.471418294983,
+        "operating_cashflow": 26909891269.13
+      },
+      {
+        "report_date": "2025-12-31",
+        "disclosure_date": "2026-04-17",
+        "currency": "CNY",
+        "revenue": 172054171890.91,
+        "net_profit": 82320067101.68,
+        "roe_pct": 32.53,
+        "gross_margin_pct": 91.1795516835,
+        "debt_ratio_pct": 16.4153621922,
+        "revenue_yoy_pct": -1.200097176919,
+        "profit_yoy_pct": -4.532254817158,
+        "operating_cashflow": 61522204989.35
+      },
+      {
+        "report_date": "2025-09-30",
+        "disclosure_date": "2025-10-30",
+        "currency": "CNY",
+        "revenue": 130903889634.88,
+        "net_profit": 64626746712.18,
+        "roe_pct": 24.64,
+        "gross_margin_pct": 91.2933832134,
+        "debt_ratio_pct": 12.8087525579,
+        "revenue_yoy_pct": 6.320001880648,
+        "profit_yoy_pct": 6.245844952412,
+        "operating_cashflow": 38196802155.27
+      },
+      {
+        "report_date": "2025-06-30",
+        "disclosure_date": "2025-08-13",
+        "currency": "CNY",
+        "revenue": 91093762553.97,
+        "net_profit": 45402962298.1,
+        "roe_pct": 17.89,
+        "gross_margin_pct": 91.2993094819,
+        "debt_ratio_pct": 14.7548515187,
+        "revenue_yoy_pct": 9.158168061298,
+        "profit_yoy_pct": 8.891466577162,
+        "operating_cashflow": 13119061031.33
+      },
+      {
+        "report_date": "2025-03-31",
+        "disclosure_date": "2025-04-30",
+        "currency": "CNY",
+        "revenue": 51443450583.77,
+        "net_profit": 26847474238.76,
+        "roe_pct": 10.92,
+        "gross_margin_pct": 91.9736093542,
+        "debt_ratio_pct": 14.1430183604,
+        "revenue_yoy_pct": 10.66739891106,
+        "profit_yoy_pct": 11.561111702645,
+        "operating_cashflow": 8809195646.38
+      },
+      {
+        "report_date": "2024-12-31",
+        "disclosure_date": "2025-04-03",
+        "currency": "CNY",
+        "revenue": 174144069958.25,
+        "net_profit": 86228146421.62,
+        "roe_pct": 36.02,
+        "gross_margin_pct": 91.9312166361,
+        "debt_ratio_pct": 19.0447556579,
+        "revenue_yoy_pct": 15.663979743025,
+        "profit_yoy_pct": 15.379966101626,
+        "operating_cashflow": 92463692168.43
+      },
+      {
+        "report_date": "2024-09-30",
+        "disclosure_date": "2024-10-26",
+        "currency": "CNY",
+        "revenue": 123122542625.45,
+        "net_profit": 60827552118.51,
+        "roe_pct": 26.09,
+        "gross_margin_pct": 91.5313752514,
+        "debt_ratio_pct": 13.6285037456,
+        "revenue_yoy_pct": 16.907838324114,
+        "profit_yoy_pct": 15.037639785668,
+        "operating_cashflow": 44421386217.45
+      }
+    ],
+    "code": "600519",
+    "period": "quarterly"
+  },
+  "annual": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_FINANCE_MAINFINADATA&columns=ALL&filter=%28SECUCODE%3D%22600519.SH%22%29&pageNumber=1&pageSize=20&sortTypes=-1&sortColumns=REPORT_DATE&source=HSF10&client=PC",
+    "as_of": "2025-12-31",
+    "fetched_at": "2026-10-09T19:30:17.873882+08:00",
+    "warnings": [
+      "金额单位为元；比率单位为%；净利润为归母净利润；quarterly 为年初至报告期累计值，非单季值。",
+      "null 表示未披露或不可用，不代表零。"
+    ],
+    "data": [
+      {
+        "report_date": "2025-12-31",
+        "disclosure_date": "2026-04-17",
+        "currency": "CNY",
+        "revenue": 172054171890.91,
+        "net_profit": 82320067101.68,
+        "roe_pct": 32.53,
+        "gross_margin_pct": 91.1795516835,
+        "debt_ratio_pct": 16.4153621922,
+        "revenue_yoy_pct": -1.200097176919,
+        "profit_yoy_pct": -4.532254817158,
+        "operating_cashflow": 61522204989.35
+      },
+      {
+        "report_date": "2024-12-31",
+        "disclosure_date": "2025-04-03",
+        "currency": "CNY",
+        "revenue": 174144069958.25,
+        "net_profit": 86228146421.62,
+        "roe_pct": 36.02,
+        "gross_margin_pct": 91.9312166361,
+        "debt_ratio_pct": 19.0447556579,
+        "revenue_yoy_pct": 15.663979743025,
+        "profit_yoy_pct": 15.379966101626,
+        "operating_cashflow": 92463692168.43
+      },
+      {
+        "report_date": "2023-12-31",
+        "disclosure_date": "2024-04-03",
+        "currency": "CNY",
+        "revenue": 150560330316.45,
+        "net_profit": 74734071550.75,
+        "roe_pct": 34.19,
+        "gross_margin_pct": 91.9649372414,
+        "debt_ratio_pct": 17.9843241392,
+        "revenue_yoy_pct": 18.036579245867,
+        "profit_yoy_pct": 19.159899289166,
+        "operating_cashflow": 66593247721.09
+      },
+      {
+        "report_date": "2022-12-31",
+        "disclosure_date": "2023-03-31",
+        "currency": "CNY",
+        "revenue": 127553959355.97,
+        "net_profit": 62717467870.12,
+        "roe_pct": 30.26,
+        "gross_margin_pct": 91.8666548564,
+        "debt_ratio_pct": 19.4744927128,
+        "revenue_yoy_pct": 16.525647480079,
+        "profit_yoy_pct": 19.55260248241,
+        "operating_cashflow": 36698595830.03
+      },
+      {
+        "report_date": "2021-12-31",
+        "disclosure_date": "2022-03-31",
+        "currency": "CNY",
+        "revenue": 109464278563.89,
+        "net_profit": 52460144378.16,
+        "roe_pct": 29.89,
+        "gross_margin_pct": 91.5402912604,
+        "debt_ratio_pct": 22.8126739769,
+        "revenue_yoy_pct": 11.705948291952,
+        "profit_yoy_pct": 12.340886403369,
+        "operating_cashflow": 64028676147.37
+      }
+    ],
+    "code": "600519",
+    "period": "annual"
+  },
+  "news": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富新闻搜索",
+    "source_url": "https://search-api-web.eastmoney.com/search/jsonp?cb=marketnews&param=%7B%22uid%22%3A+%22%22%2C+%22keyword%22%3A+%22600519%22%2C+%22type%22%3A+%5B%22cmsArticleWebOld%22%5D%2C+%22client%22%3A+%22web%22%2C+%22clientType%22%3A+%22web%22%2C+%22clientVersion%22%3A+%22curr%22%2C+%22param%22%3A+%7B%22cmsArticleWebOld%22%3A+%7B%22searchScope%22%3A+%22default%22%2C+%22sort%22%3A+%22default%22%2C+%22pageIndex%22%3A+1%2C+%22pageSize%22%3A+3%2C+%22preTag%22%3A+%22%22%2C+%22postTag%22%3A+%22%22%7D%7D%7D",
+    "as_of": "2026-10-09 17:46:56",
+    "fetched_at": "2026-10-09T19:30:18.068005+08:00",
+    "warnings": [
+      "相关性检索结果，不保证完整或按时间排序；摘要需结合原文核实。"
+    ],
+    "data": [
+      {
+        "title": "贵州茅台：今日暂停！",
+        "summary": "近日，贵州茅台(600519)旗下官微发布公告，为持续优化i茅台APP使用体验，提升系统稳定性与服务质量，计划于2026年10月6日全天对i茅台APP进行维护升级。 　　在此期间，i茅台APP将暂停使用，需依托i茅台APP办理的线下相关服务同步暂停。",
+        "source": "证券时报网",
+        "date": "2026-10-06 08:44:00",
+        "url": "http://finance.eastmoney.com/a/202610063888722080.html"
+      },
+      {
+        "title": "“924”行情两周年记：一场“脱钩”的牛市，市值狂飙与基本面背离",
+        "summary": "前一轮行情中市值规模增长前五分别为贵州茅台（600519.SH）25262.01亿元、五粮液（000858.SZ）11325.37亿元、宁德时代（300750.SZ）7992.88亿元、招商银行（600036.SH）7361.66亿元、中国中免（601888.SH）6397.48亿元",
+        "source": "理财周刊-财事汇",
+        "date": "2026-10-09 17:46:56",
+        "url": "http://finance.eastmoney.com/a/202610093891343669.html"
+      },
+      {
+        "title": "百元股数量达199只，一日减少14只",
+        "summary": "（数据宝） 　　高价股一览 代码 简称 最新收盘价（元） 今日涨跌（%） 换手率（%） 行业 688808 联讯仪器 1420.00 -8.19 0.06 机械设备 688498 源杰科技 1290.40 -20.00 0.04 电子 600519 贵州茅台 1255.79 -0.22",
+        "source": "证券时报网",
+        "date": "2026-10-08 16:41:00",
+        "url": "http://finance.eastmoney.com/a/202610083889730080.html"
+      }
+    ]
+  },
+  "risk": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券日线计算",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600519%2Cday%2C%2C%2C62%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:18.338930+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": {
+      "code": "600519",
+      "samples": 60,
+      "start_date": "2026-07-09",
+      "end_date": "2026-10-09",
+      "annualized_volatility": 0.23590730096042264,
+      "daily_return_quantile_05": -0.01477950339512138,
+      "var_95_loss": 0.01477950339512138,
+      "max_drawdown": -0.0926594994712725,
+      "beta": -0.32636387834053265,
+      "benchmark": "沪深300",
+      "units": "小数收益率，0.01 表示 1%",
+      "beta_samples": 60,
+      "benchmark_source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh000300%2Cday%2C%2C%2C62%2Cqfq"
+    },
+    "method": "前复权简单日收益；样本标准差×sqrt(252)；历史5%分位线性插值；VaR为非负损失比例；Beta按相同起止日期收益对齐。"
+  },
+  "000001_quote": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://qt.gtimg.cn/?q=sz000001",
+    "as_of": "2026-10-09T16:15:00+08:00",
+    "fetched_at": "2026-10-09T19:30:18.416386+08:00",
+    "warnings": [
+      "公开行情快照，可能延迟；非交易时间保留最近报价。"
+    ],
+    "data": {
+      "code": "000001",
+      "symbol": "sz000001",
+      "name": "平安银行",
+      "price": 11.59,
+      "previous_close": 11.78,
+      "open": 11.78,
+      "volume": 1078106.0,
+      "volume_unit": "手",
+      "change_pct": -1.61,
+      "high": 11.89,
+      "low": 11.58,
+      "turnover_pct": 0.56,
+      "pe_ttm": 5.18,
+      "market_cap_100m_cny": 2249.15,
+      "pb": 0.49
+    }
+  },
+  "000001_info": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_BASIC_ORGINFO&columns=ALL&filter=%28SECUCODE%3D%22000001.SZ%22%29&source=HSF10&client=PC",
+    "as_of": null,
+    "fetched_at": "2026-10-09T19:30:18.555460+08:00",
+    "warnings": [
+      "公司资料快照，上游未提供资料更新时间；不将抓取时间当成资料更新时间。"
+    ],
+    "data": {
+      "code": "000001",
+      "name": "平安银行",
+      "company_name": "平安银行股份有限公司",
+      "industry": "金融-银行-股份制与城商行",
+      "listing_date": "1991-04-03",
+      "main_business": "(一)吸收公众存款;(二)发放短期、中期和长期贷款;(三)办理国内外结算;(四)办理票据承兑与贴现;(五)发行金融债券;(六)代理发行、代理兑付、承销政府债券;(七)买卖政府债券、金融债券;(八)从事同业拆借;(九)买卖、代理买卖外汇;(十)从事银行卡业务;(十一)提供信用证服务及担保;(十二)代理收付款项及代理保险业务;(十三)提供保管箱服务;(十四)结汇、售汇业务;(十五)离岸银行业务;(十六)资产托管业务;(十七)办理黄金业务;(十八)财务顾问、资信调查、咨询、见证业务;(十九)经有关监管机构批准的其他业务",
+      "market": "深圳证券交易所"
+    }
+  },
+  "000001_financials": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_FINANCE_MAINFINADATA&columns=ALL&filter=%28SECUCODE%3D%22000001.SZ%22%29&pageNumber=1&pageSize=20&sortTypes=-1&sortColumns=REPORT_DATE&source=HSF10&client=PC",
+    "as_of": "2025-12-31",
+    "fetched_at": "2026-10-09T19:30:18.987500+08:00",
+    "warnings": [
+      "金额单位为元；比率单位为%；净利润为归母净利润；quarterly 为年初至报告期累计值，非单季值。",
+      "null 表示未披露或不可用，不代表零。"
+    ],
+    "data": [
+      {
+        "report_date": "2025-12-31",
+        "disclosure_date": "2026-03-21",
+        "currency": "CNY",
+        "revenue": 131442000000.0,
+        "net_profit": 42633000000.0,
+        "roe_pct": 9.15,
+        "gross_margin_pct": null,
+        "debt_ratio_pct": 90.6985362426,
+        "revenue_yoy_pct": -10.397764068305,
+        "profit_yoy_pct": -4.212725802103,
+        "operating_cashflow": 315858000000.0
+      },
+      {
+        "report_date": "2024-12-31",
+        "disclosure_date": "2025-03-15",
+        "currency": "CNY",
+        "revenue": 146695000000.0,
+        "net_profit": 44508000000.0,
+        "roe_pct": 10.08,
+        "gross_margin_pct": null,
+        "debt_ratio_pct": 91.4227969916,
+        "revenue_yoy_pct": -10.93145677873,
+        "profit_yoy_pct": -4.191152728447,
+        "operating_cashflow": 63336000000.0
+      },
+      {
+        "report_date": "2023-12-31",
+        "disclosure_date": "2024-03-15",
+        "currency": "CNY",
+        "revenue": 164699000000.0,
+        "net_profit": 46455000000.0,
+        "roe_pct": 11.38,
+        "gross_margin_pct": null,
+        "debt_ratio_pct": 91.5461214695,
+        "revenue_yoy_pct": -8.447149726229,
+        "profit_yoy_pct": 2.063010809386,
+        "operating_cashflow": 92461000000.0
+      },
+      {
+        "report_date": "2022-12-31",
+        "disclosure_date": "2023-03-09",
+        "currency": "CNY",
+        "revenue": 179895000000.0,
+        "net_profit": 45516000000.0,
+        "roe_pct": 12.36,
+        "gross_margin_pct": null,
+        "debt_ratio_pct": 91.8316479107,
+        "revenue_yoy_pct": 6.206053736207,
+        "profit_yoy_pct": 25.264200792602,
+        "operating_cashflow": 134572000000.0
+      },
+      {
+        "report_date": "2021-12-31",
+        "disclosure_date": "2022-03-10",
+        "currency": "CNY",
+        "revenue": 169383000000.0,
+        "net_profit": 36336000000.0,
+        "roe_pct": 10.85,
+        "gross_margin_pct": null,
+        "debt_ratio_pct": 91.9646928301,
+        "revenue_yoy_pct": 10.317046801527,
+        "profit_yoy_pct": 25.608407079646,
+        "operating_cashflow": -192733000000.0
+      }
+    ],
+    "code": "000001",
+    "period": "annual"
+  },
+  "000001_kline": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz000001%2Cday%2C%2C%2C60%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:19.108978+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": [
+      {
+        "date": "2026-07-10",
+        "open": 10.251,
+        "close": 10.201,
+        "high": 10.261,
+        "low": 10.151,
+        "volume": 957320.0
+      },
+      {
+        "date": "2026-07-13",
+        "open": 10.171,
+        "close": 10.291,
+        "high": 10.301,
+        "low": 10.131,
+        "volume": 924746.0
+      },
+      {
+        "date": "2026-07-14",
+        "open": 10.281,
+        "close": 10.441,
+        "high": 10.451,
+        "low": 10.231,
+        "volume": 1193715.0
+      },
+      {
+        "date": "2026-07-15",
+        "open": 10.401,
+        "close": 10.591,
+        "high": 10.621,
+        "low": 10.381,
+        "volume": 981422.0
+      },
+      {
+        "date": "2026-07-16",
+        "open": 10.601,
+        "close": 10.521,
+        "high": 10.681,
+        "low": 10.471,
+        "volume": 800766.0
+      },
+      {
+        "date": "2026-07-17",
+        "open": 10.501,
+        "close": 10.531,
+        "high": 10.631,
+        "low": 10.471,
+        "volume": 1075499.0
+      },
+      {
+        "date": "2026-07-20",
+        "open": 10.501,
+        "close": 10.731,
+        "high": 10.751,
+        "low": 10.491,
+        "volume": 1567304.0
+      },
+      {
+        "date": "2026-07-21",
+        "open": 10.741,
+        "close": 10.591,
+        "high": 10.881,
+        "low": 10.581,
+        "volume": 1755113.0
+      },
+      {
+        "date": "2026-07-22",
+        "open": 10.561,
+        "close": 10.731,
+        "high": 10.731,
+        "low": 10.521,
+        "volume": 1029484.0
+      },
+      {
+        "date": "2026-07-23",
+        "open": 10.671,
+        "close": 10.831,
+        "high": 10.871,
+        "low": 10.651,
+        "volume": 1095743.0
+      },
+      {
+        "date": "2026-07-24",
+        "open": 10.841,
+        "close": 10.851,
+        "high": 10.931,
+        "low": 10.841,
+        "volume": 1140933.0
+      },
+      {
+        "date": "2026-07-27",
+        "open": 10.861,
+        "close": 10.861,
+        "high": 10.911,
+        "low": 10.791,
+        "volume": 957156.0
+      },
+      {
+        "date": "2026-07-28",
+        "open": 10.851,
+        "close": 10.951,
+        "high": 10.961,
+        "low": 10.841,
+        "volume": 1061011.0
+      },
+      {
+        "date": "2026-07-29",
+        "open": 10.941,
+        "close": 11.031,
+        "high": 11.111,
+        "low": 10.931,
+        "volume": 1511054.0
+      },
+      {
+        "date": "2026-07-30",
+        "open": 11.031,
+        "close": 11.361,
+        "high": 11.371,
+        "low": 10.931,
+        "volume": 2777708.0
+      },
+      {
+        "date": "2026-07-31",
+        "open": 11.251,
+        "close": 11.381,
+        "high": 11.381,
+        "low": 11.031,
+        "volume": 2024979.0
+      },
+      {
+        "date": "2026-08-03",
+        "open": 11.291,
+        "close": 11.371,
+        "high": 11.411,
+        "low": 11.271,
+        "volume": 1060851.0
+      },
+      {
+        "date": "2026-08-04",
+        "open": 11.331,
+        "close": 11.191,
+        "high": 11.371,
+        "low": 11.171,
+        "volume": 1221130.0
+      },
+      {
+        "date": "2026-08-05",
+        "open": 11.161,
+        "close": 11.001,
+        "high": 11.251,
+        "low": 10.931,
+        "volume": 1511510.0
+      },
+      {
+        "date": "2026-08-06",
+        "open": 10.971,
+        "close": 11.021,
+        "high": 11.031,
+        "low": 10.871,
+        "volume": 1046343.0
+      },
+      {
+        "date": "2026-08-07",
+        "open": 10.981,
+        "close": 10.941,
+        "high": 11.011,
+        "low": 10.851,
+        "volume": 882977.0
+      },
+      {
+        "date": "2026-08-10",
+        "open": 10.931,
+        "close": 11.041,
+        "high": 11.131,
+        "low": 10.911,
+        "volume": 889060.0
+      },
+      {
+        "date": "2026-08-11",
+        "open": 11.061,
+        "close": 11.011,
+        "high": 11.151,
+        "low": 10.991,
+        "volume": 663361.0
+      },
+      {
+        "date": "2026-08-12",
+        "open": 11.011,
+        "close": 11.001,
+        "high": 11.041,
+        "low": 10.951,
+        "volume": 632950.0
+      },
+      {
+        "date": "2026-08-13",
+        "open": 10.981,
+        "close": 11.001,
+        "high": 11.021,
+        "low": 10.931,
+        "volume": 755981.0
+      },
+      {
+        "date": "2026-08-14",
+        "open": 10.971,
+        "close": 10.861,
+        "high": 10.981,
+        "low": 10.861,
+        "volume": 832344.0
+      },
+      {
+        "date": "2026-08-17",
+        "open": 10.951,
+        "close": 10.851,
+        "high": 10.971,
+        "low": 10.821,
+        "volume": 929043.0
+      },
+      {
+        "date": "2026-08-18",
+        "open": 10.851,
+        "close": 10.801,
+        "high": 10.891,
+        "low": 10.781,
+        "volume": 808930.0
+      },
+      {
+        "date": "2026-08-19",
+        "open": 10.831,
+        "close": 11.021,
+        "high": 11.021,
+        "low": 10.821,
+        "volume": 1426496.0
+      },
+      {
+        "date": "2026-08-20",
+        "open": 10.951,
+        "close": 11.151,
+        "high": 11.151,
+        "low": 10.941,
+        "volume": 1183578.0
+      },
+      {
+        "date": "2026-08-21",
+        "open": 11.111,
+        "close": 11.161,
+        "high": 11.211,
+        "low": 11.071,
+        "volume": 869128.0
+      },
+      {
+        "date": "2026-08-24",
+        "open": 11.131,
+        "close": 11.311,
+        "high": 11.331,
+        "low": 11.101,
+        "volume": 1199025.0
+      },
+      {
+        "date": "2026-08-25",
+        "open": 11.321,
+        "close": 11.341,
+        "high": 11.391,
+        "low": 11.281,
+        "volume": 994881.0
+      },
+      {
+        "date": "2026-08-26",
+        "open": 11.301,
+        "close": 11.481,
+        "high": 11.501,
+        "low": 11.271,
+        "volume": 1167289.0
+      },
+      {
+        "date": "2026-08-27",
+        "open": 11.451,
+        "close": 11.341,
+        "high": 11.471,
+        "low": 11.261,
+        "volume": 975702.0
+      },
+      {
+        "date": "2026-08-28",
+        "open": 11.291,
+        "close": 11.401,
+        "high": 11.431,
+        "low": 11.231,
+        "volume": 838126.0
+      },
+      {
+        "date": "2026-08-31",
+        "open": 11.391,
+        "close": 11.471,
+        "high": 11.521,
+        "low": 11.371,
+        "volume": 908857.0
+      },
+      {
+        "date": "2026-09-01",
+        "open": 11.431,
+        "close": 11.671,
+        "high": 11.711,
+        "low": 11.401,
+        "volume": 1523165.0
+      },
+      {
+        "date": "2026-09-02",
+        "open": 11.671,
+        "close": 11.661,
+        "high": 11.741,
+        "low": 11.601,
+        "volume": 892248.0
+      },
+      {
+        "date": "2026-09-03",
+        "open": 11.631,
+        "close": 11.631,
+        "high": 11.831,
+        "low": 11.581,
+        "volume": 1105134.0
+      },
+      {
+        "date": "2026-09-04",
+        "open": 11.611,
+        "close": 11.641,
+        "high": 11.751,
+        "low": 11.601,
+        "volume": 814373.0
+      },
+      {
+        "date": "2026-09-07",
+        "open": 11.621,
+        "close": 11.451,
+        "high": 11.631,
+        "low": 11.401,
+        "volume": 1087276.0
+      },
+      {
+        "date": "2026-09-08",
+        "open": 11.411,
+        "close": 11.531,
+        "high": 11.561,
+        "low": 11.401,
+        "volume": 740516.0
+      },
+      {
+        "date": "2026-09-09",
+        "open": 11.511,
+        "close": 11.451,
+        "high": 11.541,
+        "low": 11.441,
+        "volume": 582306.0
+      },
+      {
+        "date": "2026-09-10",
+        "open": 11.431,
+        "close": 11.601,
+        "high": 11.611,
+        "low": 11.411,
+        "volume": 867632.0
+      },
+      {
+        "date": "2026-09-11",
+        "open": 11.571,
+        "close": 11.491,
+        "high": 11.611,
+        "low": 11.461,
+        "volume": 832461.0
+      },
+      {
+        "date": "2026-09-14",
+        "open": 11.481,
+        "close": 11.601,
+        "high": 11.651,
+        "low": 11.471,
+        "volume": 741248.0
+      },
+      {
+        "date": "2026-09-15",
+        "open": 11.571,
+        "close": 11.571,
+        "high": 11.631,
+        "low": 11.521,
+        "volume": 755251.0
+      },
+      {
+        "date": "2026-09-16",
+        "open": 11.551,
+        "close": 11.451,
+        "high": 11.591,
+        "low": 11.321,
+        "volume": 949626.0
+      },
+      {
+        "date": "2026-09-17",
+        "open": 11.431,
+        "close": 11.361,
+        "high": 11.491,
+        "low": 11.321,
+        "volume": 691925.0
+      },
+      {
+        "date": "2026-09-18",
+        "open": 11.341,
+        "close": 11.451,
+        "high": 11.571,
+        "low": 11.311,
+        "volume": 853038.0
+      },
+      {
+        "date": "2026-09-21",
+        "open": 11.451,
+        "close": 11.481,
+        "high": 11.481,
+        "low": 11.351,
+        "volume": 817555.0
+      },
+      {
+        "date": "2026-09-22",
+        "open": 11.451,
+        "close": 11.461,
+        "high": 11.501,
+        "low": 11.371,
+        "volume": 759457.0
+      },
+      {
+        "date": "2026-09-23",
+        "open": 11.431,
+        "close": 11.351,
+        "high": 11.461,
+        "low": 11.301,
+        "volume": 906726.0
+      },
+      {
+        "date": "2026-09-24",
+        "open": 11.35,
+        "close": 11.3,
+        "high": 11.47,
+        "low": 11.29,
+        "volume": 1043819.0
+      },
+      {
+        "date": "2026-09-28",
+        "open": 11.28,
+        "close": 11.3,
+        "high": 11.41,
+        "low": 11.27,
+        "volume": 715341.0
+      },
+      {
+        "date": "2026-09-29",
+        "open": 11.3,
+        "close": 11.35,
+        "high": 11.41,
+        "low": 11.28,
+        "volume": 690979.0
+      },
+      {
+        "date": "2026-09-30",
+        "open": 11.36,
+        "close": 11.57,
+        "high": 11.65,
+        "low": 11.33,
+        "volume": 1045357.0
+      },
+      {
+        "date": "2026-10-08",
+        "open": 11.57,
+        "close": 11.78,
+        "high": 11.87,
+        "low": 11.54,
+        "volume": 1481686.0
+      },
+      {
+        "date": "2026-10-09",
+        "open": 11.78,
+        "close": 11.59,
+        "high": 11.89,
+        "low": 11.58,
+        "volume": 1078106.0
+      }
+    ],
+    "code": "000001",
+    "adjustment": "qfq",
+    "price_unit": "CNY",
+    "volume_unit": "手"
+  },
+  "000001_risk": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券日线计算",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz000001%2Cday%2C%2C%2C62%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:19.370273+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": {
+      "code": "000001",
+      "samples": 60,
+      "start_date": "2026-07-09",
+      "end_date": "2026-10-09",
+      "annualized_volatility": 0.16609716960469745,
+      "daily_return_quantile_05": -0.015844706823526716,
+      "var_95_loss": 0.015844706823526716,
+      "max_drawdown": -0.050962129865565475,
+      "beta": -0.1680829663397399,
+      "benchmark": "沪深300",
+      "units": "小数收益率，0.01 表示 1%",
+      "beta_samples": 60,
+      "benchmark_source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh000300%2Cday%2C%2C%2C62%2Cqfq"
+    },
+    "method": "前复权简单日收益；样本标准差×sqrt(252)；历史5%分位线性插值；VaR为非负损失比例；Beta按相同起止日期收益对齐。"
+  },
+  "300750_quote": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://qt.gtimg.cn/?q=sz300750",
+    "as_of": "2026-10-09T16:14:33+08:00",
+    "fetched_at": "2026-10-09T19:30:19.442078+08:00",
+    "warnings": [
+      "公开行情快照，可能延迟；非交易时间保留最近报价。"
+    ],
+    "data": {
+      "code": "300750",
+      "symbol": "sz300750",
+      "name": "宁德时代",
+      "price": 297.75,
+      "previous_close": 286.75,
+      "open": 292.0,
+      "volume": 541527.0,
+      "volume_unit": "手",
+      "change_pct": 3.84,
+      "high": 301.42,
+      "low": 289.0,
+      "turnover_pct": 1.27,
+      "pe_ttm": 16.21,
+      "market_cap_100m_cny": 13777.64,
+      "pb": 3.69
+    }
+  },
+  "300750_info": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_BASIC_ORGINFO&columns=ALL&filter=%28SECUCODE%3D%22300750.SZ%22%29&source=HSF10&client=PC",
+    "as_of": null,
+    "fetched_at": "2026-10-09T19:30:19.564174+08:00",
+    "warnings": [
+      "公司资料快照，上游未提供资料更新时间；不将抓取时间当成资料更新时间。"
+    ],
+    "data": {
+      "code": "300750",
+      "name": "宁德时代",
+      "company_name": "宁德时代新能源科技股份有限公司",
+      "industry": "电气设备-电源设备-储能设备",
+      "listing_date": "2018-06-11",
+      "main_business": "从事动力电池、储能电池的研发、生产、销售,以推动固定式化石能源替代、移动式化石能源替代,并通过电动化和智能化实现市场应用的集成创新",
+      "market": "深圳证券交易所"
+    }
+  },
+  "300750_financials": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "东方财富",
+    "source_url": "https://datacenter.eastmoney.com/securities/api/data/v1/get?reportName=RPT_F10_FINANCE_MAINFINADATA&columns=ALL&filter=%28SECUCODE%3D%22300750.SZ%22%29&pageNumber=1&pageSize=20&sortTypes=-1&sortColumns=REPORT_DATE&source=HSF10&client=PC",
+    "as_of": "2025-12-31",
+    "fetched_at": "2026-10-09T19:30:19.767747+08:00",
+    "warnings": [
+      "金额单位为元；比率单位为%；净利润为归母净利润；quarterly 为年初至报告期累计值，非单季值。",
+      "null 表示未披露或不可用，不代表零。"
+    ],
+    "data": [
+      {
+        "report_date": "2025-12-31",
+        "disclosure_date": "2026-03-10",
+        "currency": "CNY",
+        "revenue": 423701834000.0,
+        "net_profit": 72201282000.0,
+        "roe_pct": 24.91,
+        "gross_margin_pct": 26.2728475704,
+        "debt_ratio_pct": 61.9392859503,
+        "revenue_yoy_pct": 17.040646606968,
+        "profit_yoy_pct": 42.28344558352,
+        "operating_cashflow": 133219982000.0
+      },
+      {
+        "report_date": "2024-12-31",
+        "disclosure_date": "2025-03-15",
+        "currency": "CNY",
+        "revenue": 362012554000.0,
+        "net_profit": 50744682000.0,
+        "roe_pct": 24.13,
+        "gross_margin_pct": 24.4448967369,
+        "debt_ratio_pct": 65.2382444159,
+        "revenue_yoy_pct": -9.703875523676,
+        "profit_yoy_pct": 15.011891776044,
+        "operating_cashflow": 96990345000.0
+      },
+      {
+        "report_date": "2023-12-31",
+        "disclosure_date": "2024-03-16",
+        "currency": "CNY",
+        "revenue": 400917045000.0,
+        "net_profit": 44121248000.0,
+        "roe_pct": 24.04,
+        "gross_margin_pct": 19.1897341257,
+        "debt_ratio_pct": 69.340079531,
+        "revenue_yoy_pct": 22.009854182131,
+        "profit_yoy_pct": 43.581025236824,
+        "operating_cashflow": 92826124000.0
+      },
+      {
+        "report_date": "2022-12-31",
+        "disclosure_date": "2023-03-10",
+        "currency": "CNY",
+        "revenue": 328593987500.0,
+        "net_profit": 30729163500.0,
+        "roe_pct": 24.67,
+        "gross_margin_pct": 20.2512464718,
+        "debt_ratio_pct": 70.561865439,
+        "revenue_yoy_pct": 152.074703676161,
+        "profit_yoy_pct": 92.885257157539,
+        "operating_cashflow": 61208843300.0
+      },
+      {
+        "report_date": "2021-12-31",
+        "disclosure_date": "2022-04-22",
+        "currency": "CNY",
+        "revenue": 130355796400.0,
+        "net_profit": 15931317900.0,
+        "roe_pct": 21.52,
+        "gross_margin_pct": 26.283506408,
+        "debt_ratio_pct": 69.8953035666,
+        "revenue_yoy_pct": 159.056286854844,
+        "profit_yoy_pct": 185.336762750933,
+        "operating_cashflow": 42908008700.0
+      }
+    ],
+    "code": "300750",
+    "period": "annual"
+  },
+  "300750_kline": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300750%2Cday%2C%2C%2C60%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:19.892987+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": [
+      {
+        "date": "2026-07-10",
+        "open": 373.598,
+        "close": 347.358,
+        "high": 373.798,
+        "low": 344.758,
+        "volume": 556014.0
+      },
+      {
+        "date": "2026-07-13",
+        "open": 347.598,
+        "close": 357.658,
+        "high": 360.598,
+        "low": 346.598,
+        "volume": 462907.0
+      },
+      {
+        "date": "2026-07-14",
+        "open": 351.198,
+        "close": 362.608,
+        "high": 363.228,
+        "low": 351.088,
+        "volume": 436316.0
+      },
+      {
+        "date": "2026-07-15",
+        "open": 366.608,
+        "close": 371.598,
+        "high": 378.588,
+        "low": 361.678,
+        "volume": 358493.0
+      },
+      {
+        "date": "2026-07-16",
+        "open": 368.078,
+        "close": 364.798,
+        "high": 373.618,
+        "low": 363.098,
+        "volume": 251869.0
+      },
+      {
+        "date": "2026-07-17",
+        "open": 370.898,
+        "close": 358.598,
+        "high": 373.838,
+        "low": 358.598,
+        "volume": 512453.0
+      },
+      {
+        "date": "2026-07-20",
+        "open": 352.598,
+        "close": 375.028,
+        "high": 376.198,
+        "low": 352.398,
+        "volume": 447908.0
+      },
+      {
+        "date": "2026-07-21",
+        "open": 371.268,
+        "close": 380.798,
+        "high": 389.598,
+        "low": 371.098,
+        "volume": 440360.0
+      },
+      {
+        "date": "2026-07-22",
+        "open": 381.448,
+        "close": 370.858,
+        "high": 383.598,
+        "low": 368.468,
+        "volume": 311938.0
+      },
+      {
+        "date": "2026-07-23",
+        "open": 371.598,
+        "close": 384.588,
+        "high": 384.598,
+        "low": 364.608,
+        "volume": 359409.0
+      },
+      {
+        "date": "2026-07-24",
+        "open": 381.778,
+        "close": 381.608,
+        "high": 389.458,
+        "low": 381.248,
+        "volume": 254542.0
+      },
+      {
+        "date": "2026-07-27",
+        "open": 396.608,
+        "close": 398.598,
+        "high": 402.398,
+        "low": 392.598,
+        "volume": 473272.0
+      },
+      {
+        "date": "2026-07-28",
+        "open": 394.858,
+        "close": 389.458,
+        "high": 398.588,
+        "low": 389.458,
+        "volume": 371911.0
+      },
+      {
+        "date": "2026-07-29",
+        "open": 388.598,
+        "close": 395.438,
+        "high": 400.458,
+        "low": 379.978,
+        "volume": 404359.0
+      },
+      {
+        "date": "2026-07-30",
+        "open": 388.598,
+        "close": 400.478,
+        "high": 402.398,
+        "low": 388.398,
+        "volume": 452390.0
+      },
+      {
+        "date": "2026-07-31",
+        "open": 394.148,
+        "close": 393.898,
+        "high": 398.798,
+        "low": 387.598,
+        "volume": 394149.0
+      },
+      {
+        "date": "2026-08-03",
+        "open": 391.198,
+        "close": 392.998,
+        "high": 394.478,
+        "low": 388.198,
+        "volume": 215223.0
+      },
+      {
+        "date": "2026-08-04",
+        "open": 393.598,
+        "close": 393.698,
+        "high": 396.458,
+        "low": 389.818,
+        "volume": 261654.0
+      },
+      {
+        "date": "2026-08-05",
+        "open": 398.618,
+        "close": 403.798,
+        "high": 406.498,
+        "low": 396.598,
+        "volume": 300112.0
+      },
+      {
+        "date": "2026-08-06",
+        "open": 408.598,
+        "close": 386.598,
+        "high": 408.598,
+        "low": 382.758,
+        "volume": 453201.0
+      },
+      {
+        "date": "2026-08-07",
+        "open": 386.588,
+        "close": 386.668,
+        "high": 387.478,
+        "low": 382.618,
+        "volume": 255193.0
+      },
+      {
+        "date": "2026-08-10",
+        "open": 385.61,
+        "close": 393.87,
+        "high": 394.62,
+        "low": 384.63,
+        "volume": 231609.0
+      },
+      {
+        "date": "2026-08-11",
+        "open": 395.0,
+        "close": 390.4,
+        "high": 395.28,
+        "low": 389.52,
+        "volume": 162992.0
+      },
+      {
+        "date": "2026-08-12",
+        "open": 388.43,
+        "close": 393.93,
+        "high": 395.91,
+        "low": 387.52,
+        "volume": 202364.0
+      },
+      {
+        "date": "2026-08-13",
+        "open": 393.04,
+        "close": 396.3,
+        "high": 399.39,
+        "low": 391.04,
+        "volume": 244293.0
+      },
+      {
+        "date": "2026-08-14",
+        "open": 395.0,
+        "close": 393.93,
+        "high": 400.99,
+        "low": 393.68,
+        "volume": 159302.0
+      },
+      {
+        "date": "2026-08-17",
+        "open": 393.93,
+        "close": 399.98,
+        "high": 400.5,
+        "low": 390.5,
+        "volume": 203998.0
+      },
+      {
+        "date": "2026-08-18",
+        "open": 399.0,
+        "close": 396.26,
+        "high": 400.75,
+        "low": 394.5,
+        "volume": 169332.0
+      },
+      {
+        "date": "2026-08-19",
+        "open": 394.0,
+        "close": 389.0,
+        "high": 396.99,
+        "low": 388.33,
+        "volume": 211572.0
+      },
+      {
+        "date": "2026-08-20",
+        "open": 391.51,
+        "close": 385.0,
+        "high": 392.09,
+        "low": 384.0,
+        "volume": 179096.0
+      },
+      {
+        "date": "2026-08-21",
+        "open": 386.0,
+        "close": 391.15,
+        "high": 397.83,
+        "low": 383.05,
+        "volume": 204496.0
+      },
+      {
+        "date": "2026-08-24",
+        "open": 391.15,
+        "close": 387.89,
+        "high": 394.4,
+        "low": 386.68,
+        "volume": 139730.0
+      },
+      {
+        "date": "2026-08-25",
+        "open": 391.0,
+        "close": 376.73,
+        "high": 391.15,
+        "low": 376.06,
+        "volume": 260646.0
+      },
+      {
+        "date": "2026-08-26",
+        "open": 379.9,
+        "close": 379.0,
+        "high": 385.5,
+        "low": 373.71,
+        "volume": 207162.0
+      },
+      {
+        "date": "2026-08-27",
+        "open": 376.5,
+        "close": 373.0,
+        "high": 378.66,
+        "low": 370.05,
+        "volume": 233738.0
+      },
+      {
+        "date": "2026-08-28",
+        "open": 368.0,
+        "close": 368.5,
+        "high": 371.25,
+        "low": 364.13,
+        "volume": 263770.0
+      },
+      {
+        "date": "2026-08-31",
+        "open": 366.6,
+        "close": 363.55,
+        "high": 367.33,
+        "low": 357.3,
+        "volume": 262424.0
+      },
+      {
+        "date": "2026-09-01",
+        "open": 362.49,
+        "close": 358.1,
+        "high": 363.56,
+        "low": 358.03,
+        "volume": 198087.0
+      },
+      {
+        "date": "2026-09-02",
+        "open": 355.98,
+        "close": 348.29,
+        "high": 356.5,
+        "low": 347.55,
+        "volume": 278067.0
+      },
+      {
+        "date": "2026-09-03",
+        "open": 349.99,
+        "close": 349.5,
+        "high": 354.8,
+        "low": 348.1,
+        "volume": 262864.0
+      },
+      {
+        "date": "2026-09-04",
+        "open": 351.4,
+        "close": 351.0,
+        "high": 354.66,
+        "low": 349.56,
+        "volume": 227381.0
+      },
+      {
+        "date": "2026-09-07",
+        "open": 351.05,
+        "close": 348.2,
+        "high": 351.8,
+        "low": 345.5,
+        "volume": 246788.0
+      },
+      {
+        "date": "2026-09-08",
+        "open": 345.67,
+        "close": 335.49,
+        "high": 346.6,
+        "low": 326.0,
+        "volume": 519551.0
+      },
+      {
+        "date": "2026-09-09",
+        "open": 332.48,
+        "close": 336.84,
+        "high": 337.66,
+        "low": 327.1,
+        "volume": 390240.0
+      },
+      {
+        "date": "2026-09-10",
+        "open": 335.9,
+        "close": 338.06,
+        "high": 340.8,
+        "low": 330.5,
+        "volume": 291184.0
+      },
+      {
+        "date": "2026-09-11",
+        "open": 333.06,
+        "close": 330.51,
+        "high": 335.66,
+        "low": 328.3,
+        "volume": 276600.0
+      },
+      {
+        "date": "2026-09-14",
+        "open": 334.51,
+        "close": 337.11,
+        "high": 341.81,
+        "low": 334.0,
+        "volume": 261849.0
+      },
+      {
+        "date": "2026-09-15",
+        "open": 335.0,
+        "close": 316.36,
+        "high": 335.73,
+        "low": 316.0,
+        "volume": 480483.0
+      },
+      {
+        "date": "2026-09-16",
+        "open": 313.01,
+        "close": 305.48,
+        "high": 315.0,
+        "low": 299.0,
+        "volume": 787163.0
+      },
+      {
+        "date": "2026-09-17",
+        "open": 306.0,
+        "close": 304.3,
+        "high": 308.66,
+        "low": 302.7,
+        "volume": 344896.0
+      },
+      {
+        "date": "2026-09-18",
+        "open": 309.77,
+        "close": 301.95,
+        "high": 310.0,
+        "low": 300.27,
+        "volume": 380713.0
+      },
+      {
+        "date": "2026-09-21",
+        "open": 303.04,
+        "close": 297.1,
+        "high": 303.6,
+        "low": 295.5,
+        "volume": 494883.0
+      },
+      {
+        "date": "2026-09-22",
+        "open": 298.0,
+        "close": 304.63,
+        "high": 308.69,
+        "low": 297.74,
+        "volume": 473811.0
+      },
+      {
+        "date": "2026-09-23",
+        "open": 304.5,
+        "close": 301.0,
+        "high": 305.76,
+        "low": 299.1,
+        "volume": 247441.0
+      },
+      {
+        "date": "2026-09-24",
+        "open": 300.0,
+        "close": 293.5,
+        "high": 302.0,
+        "low": 293.0,
+        "volume": 280085.0
+      },
+      {
+        "date": "2026-09-28",
+        "open": 289.0,
+        "close": 291.99,
+        "high": 292.66,
+        "low": 286.66,
+        "volume": 339144.0
+      },
+      {
+        "date": "2026-09-29",
+        "open": 291.0,
+        "close": 286.8,
+        "high": 293.19,
+        "low": 285.74,
+        "volume": 298757.0
+      },
+      {
+        "date": "2026-09-30",
+        "open": 290.0,
+        "close": 291.11,
+        "high": 292.7,
+        "low": 285.8,
+        "volume": 296995.0
+      },
+      {
+        "date": "2026-10-08",
+        "open": 292.0,
+        "close": 286.75,
+        "high": 293.47,
+        "low": 285.17,
+        "volume": 366825.0
+      },
+      {
+        "date": "2026-10-09",
+        "open": 292.0,
+        "close": 297.75,
+        "high": 301.42,
+        "low": 289.0,
+        "volume": 541527.0
+      }
+    ],
+    "code": "300750",
+    "adjustment": "qfq",
+    "price_unit": "CNY",
+    "volume_unit": "手"
+  },
+  "300750_risk": {
+    "status": "ok",
+    "is_demo": false,
+    "source": "腾讯证券日线计算",
+    "source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300750%2Cday%2C%2C%2C62%2Cqfq",
+    "as_of": "2026-10-09",
+    "fetched_at": "2026-10-09T19:30:20.172759+08:00",
+    "warnings": [
+      "日线末条在交易时段可能尚未收盘；前复权价格不代表当日实际成交价。"
+    ],
+    "data": {
+      "code": "300750",
+      "samples": 60,
+      "start_date": "2026-07-09",
+      "end_date": "2026-10-09",
+      "annualized_volatility": 0.3707756987519473,
+      "daily_return_quantile_05": -0.0368066875821086,
+      "var_95_loss": 0.0368066875821086,
+      "max_drawdown": -0.2898677061302929,
+      "beta": 0.7936349033158104,
+      "benchmark": "沪深300",
+      "units": "小数收益率，0.01 表示 1%",
+      "beta_samples": 60,
+      "benchmark_source_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh000300%2Cday%2C%2C%2C62%2Cqfq"
+    },
+    "method": "前复权简单日收益；样本标准差×sqrt(252)；历史5%分位线性插值；VaR为非负损失比例；Beta按相同起止日期收益对齐。"
+  }
+}

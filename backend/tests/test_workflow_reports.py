@@ -181,16 +181,20 @@ def test_database_error_does_not_commit_turn(monkeypatch):
 def test_document_metadata_is_saved_on_success_and_failure(monkeypatch):
     from app.api import rag
     from app.storage.schema import documents
-    kb = AsyncMock()
-    kb.add_text_chunks.return_value = 1
-    monkeypatch.setattr(rag, 'get_kb_manager', lambda: kb)
+    from app.rag.knowledge_base import KnowledgeBaseManager
+    from app.rag import documents as lifecycle
+    kb = KnowledgeBaseManager(AsyncMock())
+    kb.add_chunks_to_vectorstore = AsyncMock(return_value=1)
+    from unittest.mock import Mock
+    kb._collection = Mock()
+    monkeypatch.setattr(lifecycle, 'get_kb_manager', lambda: kb)
     store = get_orchestrator().store
     with TestClient(app) as client:
         response = client.post('/api/v1/rag/knowledge/add', json={'title': '年报', 'category': 'report', 'content': '内容'})
         assert response.status_code == 200
         with store.engine.connect() as db:
             assert db.scalar(select(documents.c.status).where(documents.c.id == response.json()['doc_id'])) == 'indexed'
-        kb.add_text_chunks.side_effect = RuntimeError('embedding unavailable')
-        assert client.post('/api/v1/rag/knowledge/add', json={'title': '失败', 'category': 'report', 'content': '内容'}).status_code == 500
+        kb.add_chunks_to_vectorstore.side_effect = RuntimeError('embedding unavailable')
+        assert client.post('/api/v1/rag/knowledge/add', json={'title': '失败', 'category': 'report', 'content': '内容'}).status_code == 503
         with store.engine.connect() as db:
             assert db.scalar(select(documents.c.status).where(documents.c.title == '失败')) == 'failed'

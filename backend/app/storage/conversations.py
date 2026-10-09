@@ -209,6 +209,22 @@ class ConversationStore:
             else:
                 db.execute(insert(documents).values(id=doc_id, created_at=now(), **values))
 
+    def list_documents(self):
+        with self.engine.connect() as db:
+            rows = db.execute(select(documents).order_by(documents.c.created_at.desc())).mappings().all()
+        return [{**row, 'payload': json.loads(row['payload'])} for row in rows]
+
+    def get_document(self, doc_id):
+        with self.engine.connect() as db:
+            row = db.execute(select(documents).where(documents.c.id == doc_id)).mappings().first()
+        if row is None:
+            raise KeyError(doc_id)
+        return {**row, 'payload': json.loads(row['payload'])}
+
+    def delete_document(self, doc_id):
+        with self.engine.begin() as db:
+            db.execute(delete(documents).where(documents.c.id == doc_id))
+
     def import_history(self, source):
         """Atomic, insert-only import. Reject conflicting IDs rather than overwrite user data."""
         count = 0

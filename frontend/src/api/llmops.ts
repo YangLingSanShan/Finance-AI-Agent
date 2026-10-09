@@ -15,7 +15,7 @@ export interface RecentCall {
 }
 
 export const llmopsApi = {
-  getMetrics: (days = 7) => apiClient.get<LLMOpsMetrics>('/llmops/metrics', { params: { days } }),
-  getDailyStats: (days = 30) => apiClient.get<{ daily_stats: DailyStats[] }>('/llmops/daily', { params: { days } }),
-  getRecentCalls: (limit = 50) => apiClient.get<{ recent_calls: RecentCall[] }>('/llmops/recent', { params: { limit } }),
+  getMetrics: (days = 7) => apiClient.get<LLMOpsMetrics, LLMOpsMetrics>('/llmops/metrics', { params: { days } }),
+  getDailyStats: (days = 30) => apiClient.get<{ daily_stats: DailyStats[] }, { daily_stats: DailyStats[] }>('/llmops/daily', { params: { days } }),
+  getRecentCalls: (limit = 50) => apiClient.get<{ recent_calls: RecentCall[] }, { recent_calls: RecentCall[] }>('/llmops/recent', { params: { limit } }),
 }

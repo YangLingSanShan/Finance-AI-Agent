@@ -5,6 +5,7 @@ backend/app/api/chat.py
 import uuid
 import time
 import logging
+import re
 from app.storage.conversations import ArchivedConversation
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -12,7 +13,7 @@ from app.config import get_settings
 from app.models.schemas import ChatRequest, ChatResponse, AgentType
 from app.agents.orchestrator import get_orchestrator
 from app.llmops.monitor import get_llmops_monitor
-from app.rag.retriever import get_hybrid_retriever
+from app.rag.retriever import get_hybrid_retriever, evidence_context
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -33,11 +34,16 @@ async def chat(request: ChatRequest):
         sources = []
         if request.enable_rag:
             retriever = get_hybrid_retriever()
-            chunks = await retriever.retrieve(query=request.message, top_k=5, enable_rerank=True)
-            if chunks:
-                context["rag_context"] = chunks
-                sources = [{"content": c["content"][:200] + "...", "score": round(c["score"], 3),
-                            "metadata": c.get("metadata", {})} for c in chunks]
+            codes = set(re.findall(r'(?<![0-9])[0-9]{6}(?![0-9])', request.message))
+            filters = {'stock_code': next(iter(codes))} if len(codes) == 1 else None
+            try:
+                chunks = await retriever.retrieve(query=request.message, top_k=5,
+                                                  enable_rerank=True, filters=filters)
+            except Exception as exc:
+                logger.warning('Chat retrieval failed: %s', type(exc).__name__)
+                raise HTTPException(503, '知识库检索服务暂不可用，请稍后重试；本次未生成回答') from exc
+            sources = evidence_context(chunks)
+            context["rag_context"] = sources
 
         # Agent 执行
         orchestrator = get_orchestrator()
